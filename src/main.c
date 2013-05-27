@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <LPCxxxx.h>
+#include <LPC11xx.h>
 
 int main (void) {
   SystemInit();
@@ -30,13 +30,14 @@ int main (void) {
   /* Update the value of SystemCoreClock */
   SystemCoreClockUpdate();
 
-  /* Set an LED output */
-  /* TODO: */
+  /* Set an LED output on P0[7]*/
+  LPC_GPIO0->DIR |= 1 << 7;
 
   /* Configure the SysTick for 50ms interrupts */
   SysTick_Config(SystemCoreClock / 20);
 }
+
 extern void SysTick_Handler(void) {
   /* Toggle an LED */
-  /* TODO: */
+  LPC_GPIO0->DATA ^= 1 << 11;
 }
