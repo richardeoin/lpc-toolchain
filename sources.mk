@@ -1,0 +1,1 @@
+SOURCES += src/main.c \
