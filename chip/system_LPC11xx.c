@@ -143,31 +143,31 @@ void SystemInit (void)
    */
 
   /* Power up the System Oscillator */
-//  LPC_SYSCON->PDRUNCFG &= ~0x0020;
+  LPC_SYSCON->PDRUNCFG &= ~0x0020;
 
   /* Set the appropriate frequency range */
 #if __XTAL < 20000000
-//  LPC_SYSCON->SYSOSCCTRL = 0x0;
+  LPC_SYSCON->SYSOSCCTRL = 0x0;
 #else
-//  LPC_SYSCON->SYSOSCCTRL = 0x2;
+  LPC_SYSCON->SYSOSCCTRL = 0x2;
 #endif
 
   /* Wait about 16µS */
-//  for (uint32_t i = 0; i < 200; i++) { __NOP(); }
+  for (uint32_t i = 0; i < 200; i++) { __NOP(); }
 
   /* Select the System Oscillator as the PLL Input Source */
-//  LPC_SYSCON->SYSPLLCLKSEL = 0x1;
+  LPC_SYSCON->SYSPLLCLKSEL = 0x1;
   /* And toggle to update */
-//  LPC_SYSCON->SYSPLLCLKUEN = 0x0;
-//  LPC_SYSCON->SYSPLLCLKUEN = 0x1;
-//  while (!(LPC_SYSCON->SYSPLLCLKUEN & 0x1));
+  LPC_SYSCON->SYSPLLCLKUEN = 0x0;
+  LPC_SYSCON->SYSPLLCLKUEN = 0x1;
+  while (!(LPC_SYSCON->SYSPLLCLKUEN & 0x1));
 
   /* Select the PLL Input as the Main Clock source */
-//  LPC_SYSCON->MAINCLKSEL = 0x1;
+  LPC_SYSCON->MAINCLKSEL = 0x1;
   /* And toggle to update */
-//  LPC_SYSCON->MAINCLKUEN = 0x0;
-//  LPC_SYSCON->MAINCLKUEN = 0x1;
-//  while(!(LPC_SYSCON->MAINCLKUEN & 0x1));
+  LPC_SYSCON->MAINCLKUEN = 0x0;
+  LPC_SYSCON->MAINCLKUEN = 0x1;
+  while(!(LPC_SYSCON->MAINCLKUEN & 0x1));
 
   /* Enable the clock to the I/O Configuration Block */
   LPC_SYSCON->SYSAHBCLKCTRL |= 0x0100;
