@@ -301,9 +301,19 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t DLL;		// Divisor Latch LSB
-  __IO	uint32_t IER;		// Interrupt Enable Register
-  __O	uint32_t FCR;		// FIFO Control Register
+  union {
+    __I  uint32_t RBR;		// Receiver Buffer Register
+    __O  uint32_t THR;		// Transmit Holding Register
+    __IO uint32_t DLL;		// Divisor Latch LSB
+  };
+  union {
+    __IO uint32_t DLM;		// Divisor Latch MSB
+    __IO uint32_t IER;		// Interrupt Enable Register
+  };
+  union {
+    __I uint32_t IIR;		// Interrupt ID Register
+    __O	uint32_t FCR;		// FIFO Control Register
+  };
   __IO	uint32_t LCR;		// Line Control Register
   __IO	uint32_t MCR;		// Modem control register
   __I	uint32_t LSR;		// Line Status Register
@@ -317,8 +327,6 @@ typedef struct
 	uint32_t RESERVED2[6];
   __IO	uint32_t RS485CTRL;		// RS-485/EIA-485 Control
   __IO	uint32_t RS485ADR;		// RS-485/EIA-485 address match
-	uint32_t RESERVED3[4076];
-  __IO	uint32_t THR;		// 000C
 } LPC_UART_TypeDef;
 /*@}*/ /* end of group LPC11xx_UART */
 
