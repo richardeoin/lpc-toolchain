@@ -173,5 +173,5 @@ void SystemInit (void)
   InitExternalOscillator();
 
   /* Enable the clock to the I/O Configuration Block */
-  LPC_SYSCON->SYSAHBCLKCTRL |= 0x0100;
+  LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 16);
 }
