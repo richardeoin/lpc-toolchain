@@ -125,23 +125,8 @@ void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
   }
 }
 
-/**
- * Initialize the system
- *
- * @param  none
- * @return none
- *
- * @brief  Setup the microcontroller system.
- *         Initialize the System.
- */
-void SystemInit (void)
-{
-  /*
-   * This code sets up the system oscillator to run from an external
-   * crystal of frequency __XTAL. If you want to do something other
-   * than this then you should modify this routine.
-   */
-
+/* Initialises and switches to the external XTAL */
+void InitExternalOscillator(void) {
   /* Power up the System Oscillator */
   LPC_SYSCON->PDRUNCFG &= ~0x0020;
 
@@ -168,6 +153,24 @@ void SystemInit (void)
   LPC_SYSCON->MAINCLKUEN = 0x0;
   LPC_SYSCON->MAINCLKUEN = 0x1;
   while(!(LPC_SYSCON->MAINCLKUEN & 0x1));
+}
+/**
+ * Initialize the system
+ *
+ * @param  none
+ * @return none
+ *
+ * @brief  Setup the microcontroller system.
+ *         Initialize the System.
+ */
+void SystemInit (void)
+{
+  /*
+   * This code sets up the system oscillator to run from an external
+   * crystal of frequency __XTAL. If you want to do something other
+   * than this then you should modify this routine.
+   */
+  InitExternalOscillator();
 
   /* Enable the clock to the I/O Configuration Block */
   LPC_SYSCON->SYSAHBCLKCTRL |= 0x0100;
