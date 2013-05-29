@@ -39,5 +39,5 @@ int main (void) {
 
 extern void SysTick_Handler(void) {
   /* Toggle an LED */
-  LPC_GPIO0->DATA ^= 1 << 11;
+  LPC_GPIO0->DATA ^= 1 << 7;
 }
