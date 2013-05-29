@@ -1,8 +1,0 @@
-# Use an arm architecture
-set architecture arm
-symbol-file out/lpc1102.elf
-
-# Define a command for connecting to the debug server
-define connect
-target extended-remote :48177
-end

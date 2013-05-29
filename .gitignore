@@ -2,5 +2,8 @@
 *~
 #*#
 
+# gdbscript
+gdbscript
+
 # The output directory
 out/
