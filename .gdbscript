@@ -1,8 +1,0 @@
-# Use an arm architecture
-set architecture arm
-symbol-file out/
-
-# Define a command for connecting to the debug server
-define connect
-target extended-remote :
-end

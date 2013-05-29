@@ -49,6 +49,7 @@ SOURCE_DIR	:= src
 #
 # Listed here for portability.
 #
+ECHO	:= echo
 FIND	:= find
 GREP	:= grep
 MKDIR	:= mkdir -p
@@ -169,21 +170,33 @@ sources:
 # written to it.
 #
 .PHONY: download
-download: all
-	@$(SED) -i 's/^symbol-file.*$$/symbol-file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' .gdbscript
+download: all gdbscript
+	@$(SED) -i 's/^symbol-file.*$$/symbol-file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
 	$(CHECKSUM) -p $(CHIP) -d $(OUTPUT_DIR)/$(PROJECT_NAME).bin
 	@echo
 	@echo
 	$(LPCLINK) -wire=winusb -p$(CHIP) -vendor=NXP -flash-load-exec=$(OUTPUT_DIR)/$(PROJECT_NAME).bin -g
+
+# Creates a gdb script if required
+#
+#
+#
+gdbscript:
+	@$(ECHO) "symbol-file" > gdbscript
+	@$(ECHO) "" >> gdbscript
+	@$(ECHO) "# Define a command for connecting to the debug server" >> gdbscript
+	@$(ECHO) "define connect" >> gdbscript
+	@$(ECHO) "target extended-remote" >> gdbscript
+	@$(ECHO) "end" >> gdbscript
 
 # Flashes the firmware to the lpc-link and starts the debug server
 #
 # Blocking. A random port is used and substituted into the .gdbscript
 #
 .PHONY: lpc-link
-lpc-link:
+lpc-link: gdbscript
 	$(eval PORT := $(shell shuf -i 2000-65000 -n 1))
-	@$(SED) -i 's/^target extended-remote.*$$/target extended-remote :$(PORT)/' .gdbscript
+	@$(SED) -i 's/^target extended-remote.*$$/target extended-remote :$(PORT)/' gdbscript
 	$(DFUUTIL) -d 0x471:0xdf55 -c 0 -t 2048 -R -D $(DFUFIRMWARE)
 	$(LPCLINK) -wire=winusb -p$(CHIP) -vendor=NXP -server=:$(PORT)
 
