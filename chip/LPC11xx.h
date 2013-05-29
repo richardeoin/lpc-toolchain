@@ -507,6 +507,19 @@ typedef struct
   __IO	uint32_t TCR;		// Timer Control Register
   __IO	uint32_t TC;		// Timer Counter
   __IO	uint32_t PR;		// Prescale Register
+  __IO	uint32_t PC;		// Prescale Counter
+  __IO	uint32_t MCR;		// Match Control Register
+  __IO	uint32_t MR0;		// Match Register 0
+  __IO	uint32_t MR1;		// Match Register 1
+  __IO	uint32_t MR2;		// Match Register 2
+  __IO	uint32_t MR3;		// Match Register 3
+  __IO	uint32_t CCR;		// Capture Control Register
+  __I	uint32_t CR0;		// Capture Register 0
+	uint32_t RESERVED0[3];
+  __IO	uint32_t EMR;		// External Match Register
+	uint32_t RESERVED1[12];
+  __IO	uint32_t CTCR;		// Count Control Register
+  __IO	uint32_t PWMC;		// PWM Control Register
 } LPC_CT32B0_TypeDef;
 /*@}*/ /* end of group LPC11xx_CT32B0 */
 
@@ -521,6 +534,18 @@ typedef struct
   __IO	uint32_t TC;		// Timer Counter
   __IO	uint32_t PR;		// Prescale Register
   __IO	uint32_t PC;		// Prescale Counter
+  __IO	uint32_t MCR;		// Match Control Register
+  __IO	uint32_t MR0;		// Match Register 0
+  __IO	uint32_t MR1;		// Match Register 1
+  __IO	uint32_t MR2;		// Match Register 2
+  __IO	uint32_t MR3;		// Match Register 3
+  __IO	uint32_t CCR;		// Capture Control Register
+  __I	uint32_t CR0;		// Capture Register 0
+	uint32_t RESERVED0[3];
+  __IO	uint32_t EMR;		// External Match Register
+	uint32_t RESERVED1[12];
+  __IO	uint32_t CTCR;		// Count Control Register
+  __IO	uint32_t PWMC;		// PWM Control Register
 } LPC_CT32B1_TypeDef;
 /*@}*/ /* end of group LPC11xx_CT32B1 */
 
