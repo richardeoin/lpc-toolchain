@@ -166,11 +166,10 @@ void InitExternalOscillator(void) {
 void SystemInit (void)
 {
   /*
-   * This code sets up the system oscillator to run from an external
-   * crystal of frequency __XTAL. If you want to do something other
-   * than this then you should modify this routine.
+   * By default the chip is running from the IRC oscillator. If you
+   * want to do something other than this then you should modify this
+   * routine.
    */
-  InitExternalOscillator();
 
   /* Enable the clock to the I/O Configuration Block */
   LPC_SYSCON->SYSAHBCLKCTRL |= 0x0100;
