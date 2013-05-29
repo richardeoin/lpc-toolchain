@@ -30,8 +30,8 @@ int main (void) {
   /* Update the value of SystemCoreClock */
   SystemCoreClockUpdate();
 
-  /* Set an LED output on P0[7]*/
-  LPC_GPIO0->DIR |= 1 << 7;
+  /* Set an LED output on P0[8]*/
+  LPC_GPIO0->DIR |= 1 << 8;
 
   /* Configure the SysTick for 50ms interrupts */
   SysTick_Config(SystemCoreClock / 20);
@@ -39,5 +39,5 @@ int main (void) {
 
 extern void SysTick_Handler(void) {
   /* Toggle an LED */
-  LPC_GPIO0->DATA ^= 1 << 7;
+  LPC_GPIO0->DATA ^= 1 << 8;
 }
