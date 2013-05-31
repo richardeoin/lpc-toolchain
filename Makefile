@@ -137,7 +137,8 @@ $(OUTPUT_DIR)/%.o: %.s
 # / linker was run with -g) is created, alongside .hex and .bin files. A just
 # about human-readable .map is also created.
 #
-$(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS)
+$(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
+	@$(SED) -i 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
 	@echo
 	@echo 'Linking $@...'
 	$(CC) $(LDFLAGS) $(addprefix -T,$(LINKERS)) -Wl,-Map,$(@:.elf=.map) -o $@ $(OBJECTS)
@@ -170,8 +171,7 @@ sources:
 # written to it.
 #
 .PHONY: download
-download: all gdbscript
-	@$(SED) -i 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
+download: all
 	$(CHECKSUM) -p $(CHIP) -d $(OUTPUT_DIR)/$(PROJECT_NAME).bin
 	@echo
 	@echo
