@@ -1,5 +1,5 @@
 /* 
- * Demo C Application: Toggles an output at 20Hz.
+ * Defines safe debug functions that won't freeze the processor
  * Copyright (C) 2013  Richard Meadows
  * 
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -22,26 +22,24 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <LPC17xx.h>
-#include <debug.h>
+#define DEBUG
 
-int main (void) {
-  SystemInit();
+#ifdef DEBUG
+/* Map the macro functions to their real equivalents */
 
-  /* Update the value of SystemCoreClock */
-  SystemCoreClockUpdate();
+#define debug_putchar(c)    _debug_putchar(c)
+#define debug_puts(s)       _debug_puts(s)
+#define debug_printf(...)   _debug_printf(__VA_ARGS__)
 
-  /* Set an LED output */
-  LPC_GPIO0->FIODIR |= 1 << 22;
+#else
+/* Define dummy functions */
 
-  /* Configure the SysTick for 50ms interrupts */
-  SysTick_Config(SystemCoreClock / 20);
+#define debug_putchar(c)
+#define debug_puts(s)
+#define debug_printf(...)
 
-}
-extern void SysTick_Handler(void) {
-  /* Toggle an LED */
-  LPC_GPIO0->FIOPIN ^= 1 << 22;
+#endif
 
-  debug_printf("Hello, world!");
-  debug_printf("\n");
-}
+void _debug_putchar(char c);
+void _debug_puts(const char* s);
+void _debug_printf(const char *format, ...);
