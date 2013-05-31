@@ -86,7 +86,7 @@ DFUFIRMWARE	:= $(LPCINSTALL)LPCXpressoWIN.enc
 #
 CFLAGS	= $(FLAGS) -Wall -Wextra -std=gnu99 -ffunction-sections -fdata-sections $(ARCH_FLAGS)
 ASFLAGS	= $(FLAGS) -Wall $(ARCH_FLAGS)
-LDFLAGS = $(FLAGS) -Wl,--start-group $(LINKER_FLAGS) -Wl,--end-group -Wextra $(ARCH_FLAGS)
+LDFLAGS = $(FLAGS) $(LINKER_FLAGS) -Wextra $(ARCH_FLAGS)
 
 # Default target
 all: $(OUTPUT_DIR)/$(PROJECT_NAME).elf
@@ -184,6 +184,9 @@ download: all gdbscript
 gdbscript:
 	@$(ECHO) "symbol-file" > gdbscript
 	@$(ECHO) "" >> gdbscript
+	@$(ECHO) "# Define a target description to override the lpc-link default" >> gdbscript
+	@$(ECHO) "set tdesc filename arm-core.xml" >> gdbscript
+	@$(ECHO) "" >> gdbscript
 	@$(ECHO) "# Define a command for connecting to the debug server" >> gdbscript
 	@$(ECHO) "define connect" >> gdbscript
 	@$(ECHO) "target extended-remote" >> gdbscript
@@ -207,3 +210,4 @@ lpc-link: gdbscript
 .PHONY: clean
 clean:
 	$(RM) $(OUTPUT_DIR)/*
+	$(RM) gdbscript
