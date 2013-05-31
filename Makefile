@@ -171,7 +171,7 @@ sources:
 #
 .PHONY: download
 download: all gdbscript
-	@$(SED) -i 's/^symbol-file.*$$/symbol-file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
+	@$(SED) -i 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
 	$(CHECKSUM) -p $(CHIP) -d $(OUTPUT_DIR)/$(PROJECT_NAME).bin
 	@echo
 	@echo
@@ -182,15 +182,16 @@ download: all gdbscript
 #
 #
 gdbscript:
-	@$(ECHO) "symbol-file" > gdbscript
-	@$(ECHO) "" >> gdbscript
+	@$(ECHO) "# Load our .elf file into GDB" >> gdbscript
+	@$(ECHO) "file" > gdbscript
 	@$(ECHO) "# Define a target description to override the lpc-link default" >> gdbscript
 	@$(ECHO) "set tdesc filename arm-core.xml" >> gdbscript
-	@$(ECHO) "" >> gdbscript
-	@$(ECHO) "# Define a command for connecting to the debug server" >> gdbscript
-	@$(ECHO) "define connect" >> gdbscript
+	@$(ECHO) "# Required for semihosting" >> gdbscript
+	@$(ECHO) "set mem inaccessible-by-default off" >> gdbscript
+	@$(ECHO) "# Connect to the debug server launched by make lpc-link" >> gdbscript
 	@$(ECHO) "target extended-remote" >> gdbscript
-	@$(ECHO) "end" >> gdbscript
+	@$(ECHO) "# Enable semihosting" >> gdbscript
+	@$(ECHO) "monitor semihosting enable" >> gdbscript
 
 # Flashes the firmware to the lpc-link and starts the debug server
 #
