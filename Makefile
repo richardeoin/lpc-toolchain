@@ -210,3 +210,4 @@ lpc-link: gdbscript
 .PHONY: clean
 clean:
 	$(RM) $(OUTPUT_DIR)/*
+	$(RM) gdbscript
