@@ -184,6 +184,9 @@ download: all gdbscript
 gdbscript:
 	@$(ECHO) "symbol-file" > gdbscript
 	@$(ECHO) "" >> gdbscript
+	@$(ECHO) "# Define a target description to override the lpc-link default" >> gdbscript
+	@$(ECHO) "set tdesc filename arm-core.xml" >> gdbscript
+	@$(ECHO) "" >> gdbscript
 	@$(ECHO) "# Define a command for connecting to the debug server" >> gdbscript
 	@$(ECHO) "define connect" >> gdbscript
 	@$(ECHO) "target extended-remote" >> gdbscript
