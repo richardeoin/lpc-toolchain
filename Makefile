@@ -148,8 +148,8 @@ $(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
 	@$(ECHO)
 	$(SIZE) $@
 	@$(ECHO)
-	@$(SIZE) $@|tail -1 -|awk '{print "ROM Usage: "int($$1/10.24)/100"K / $(ROM_SIZE)"}'
-	@$(SIZE) $@|tail -1 -|awk '{print "RAM Usage: "int($$2/10.24)/100"K / $(RAM_SIZE)"}'
+	@$(SIZE) $@|tail -1 -|awk '{print "ROM Usage: "int(($$1+$$2)/10.24)/100"K / $(ROM_SIZE)"}'
+	@$(SIZE) $@|tail -1 -|awk '{print "RAM Usage: "int(($$2+$$3)/10.24)/100"K / $(RAM_SIZE)"}'
 
 # Creates sources.mk
 #
