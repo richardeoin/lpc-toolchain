@@ -348,7 +348,7 @@ typedef struct
   __IO	uint32_t FlowControlCounter;		// Flow control counter register.
   __I	uint32_t FlowControlStatus;		// Flow control status register.
         uint32_t RESERVED4[34];
-  __IO  uint32_t RxFliterCtrl;		// Receive filter control register
+  __IO  uint32_t RxFilterCtrl;		// Receive filter control register
   __IO  uint32_t RxFilterWoLStatus;		// Receive filter WoL status register
   __IO  uint32_t RxFilterWoLClear;		// Receive filter WoL clear register
         uint32_t RESERVED5[1];
