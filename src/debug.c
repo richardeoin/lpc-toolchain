@@ -24,9 +24,11 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include <LPC17xx.h>
+#include <LPC11xx.h>
 
-#define DEBUG_ACTIVE()    (CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk)
+/* CoreDebug registers are not accesible from processor in Cortex-M0 */
+// CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk
+#define DEBUG_ACTIVE()    (1)
 
 void _debug_putchar(char c) {
   if (DEBUG_ACTIVE()) {
