@@ -975,8 +975,8 @@ typedef struct
 #define LPC_CAN2		((LPC_CAN_TypeDef*	) 0x40048000 )
 
 #define LPC_SPI			((LPC_SPI_TypeDef*	) 0x40020000 )
-#define LPC_SSP1		((LPC_SSP_TypeDef*	) 0x40088000 )
-#define LPC_SSP2		((LPC_SSP_TypeDef*	) 0x40030000 )
+#define LPC_SSP0		((LPC_SSP_TypeDef*	) 0x40088000 )
+#define LPC_SSP1		((LPC_SSP_TypeDef*	) 0x40030000 )
 
 #define LPC_I2C0		((LPC_I2C_TypeDef*	) 0x4001c000 )
 #define LPC_I2C1		((LPC_I2C_TypeDef*	) 0x4005c000 )
