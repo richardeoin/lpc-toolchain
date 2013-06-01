@@ -49,6 +49,7 @@ SOURCE_DIR	:= src
 #
 # Listed here for portability.
 #
+CAT	:= cat
 ECHO	:= echo
 FIND	:= find
 GREP	:= grep
@@ -108,8 +109,8 @@ OBJECTS = $(addprefix $(OUTPUT_DIR)/,$(objects))
 # if they stop existing the corresponding object file will be re-compiled.
 #
 $(OUTPUT_DIR)/%.o: %.c
-	@echo
-	@echo 'Compiling $<...'
+	@$(ECHO)
+	@$(ECHO) 'Compiling $<...'
 	@$(MKDIR) $(OUTPUT_DIR)/$(dir $<)
 	$(CC) -c -MMD $(CPPFLAGS) $(CFLAGS) $(addprefix -I,$(INCLUDES)) -o $@ $<
 	@$(SED) -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' -e '/^$$/ d' -e 's/$$/ :/' < $(OUTPUT_DIR)/$*.d >> $(OUTPUT_DIR)/$*.d;
@@ -126,8 +127,8 @@ $(OUTPUT_DIR)/%.o: %.c
 # assembled, not linked.
 #
 $(OUTPUT_DIR)/%.o: %.s
-	@echo
-	@echo 'Assembling $<...'
+	@$(ECHO)
+	@$(ECHO) 'Assembling $<...'
 	@$(MKDIR) $(OUTPUT_DIR)/$(dir $<)
 	$(AS) $(ASFLAGS) -o $@ $<
 
@@ -139,16 +140,16 @@ $(OUTPUT_DIR)/%.o: %.s
 #
 $(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
 	@$(SED) -i 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
-	@echo
-	@echo 'Linking $@...'
+	@$(ECHO)
+	@$(ECHO) 'Linking $@...'
 	$(CC) $(LDFLAGS) $(addprefix -T,$(LINKERS)) -Wl,-Map,$(@:.elf=.map) -o $@ $(OBJECTS)
 	@$(OBJCOPY) -O binary $@ $(@:.elf=.bin)
 	@$(OBJCOPY) -O ihex $@ $(@:.elf=.hex)
-	@echo
+	@$(ECHO)
 	$(SIZE) $@
-	@echo
-	@$(SIZE) $@|tail -1 -|awk '{print "ROM Usage: "int($$1/10.24)/100"K / $(ROM_SIZE)"}'
-	@$(SIZE) $@|tail -1 -|awk '{print "RAM Usage: "int($$2/10.24)/100"K / $(RAM_SIZE)"}'
+	@$(ECHO)
+	@$(SIZE) $@|tail -1 -|awk '{print "ROM Usage: "int(($$1+$$2)/10.24)/100"K / $(ROM_SIZE)"}'
+	@$(SIZE) $@|tail -1 -|awk '{print "RAM Usage: "int(($$2+$$3)/10.24)/100"K / $(RAM_SIZE)"}'
 
 # Creates sources.mk
 #
@@ -158,10 +159,10 @@ $(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
 #
 .PHONY: sources
 sources:
-	@echo 'Building sources.mk...' 
-	@echo
+	@$(ECHO) 'Building sources.mk...' 
+	@$(ECHO)
 	@$(FIND) $(SOURCE_DIR)/ | $(GREP) \\.[cS]$ > sources.mk
-	@cat sources.mk
+	@$(CAT) sources.mk
 	@$(SED) -i '1s/^/SOURCES += /' sources.mk
 	@$(SED) -i 's/$$/ \\/' sources.mk
 
@@ -173,8 +174,8 @@ sources:
 .PHONY: download
 download: all
 	$(CHECKSUM) -p $(CHIP) -d $(OUTPUT_DIR)/$(PROJECT_NAME).bin
-	@echo
-	@echo
+	@$(ECHO)
+	@$(ECHO)
 	$(LPCLINK) -wire=winusb -p$(CHIP) -vendor=NXP -flash-load-exec=$(OUTPUT_DIR)/$(PROJECT_NAME).bin -g
 
 # Creates a gdb script if required
