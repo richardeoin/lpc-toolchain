@@ -89,6 +89,22 @@ void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
   SystemCoreClock /= ((LPC_SC->CCLKCFG & 0xFF) + 1);
 }
 
+/* Disconnects and disables PLL0 */
+void ShutdownPLL0(void) {
+  __disable_irq();
+
+  /* Disconnect PLL0 */
+  LPC_SC->PLL0CON = 0x1;
+  LPC_SC->PLL0FEED = 0xAA;
+  LPC_SC->PLL0FEED = 0x55;
+
+  /* Disable PLL0 */
+  LPC_SC->PLL0CON = 0x0;
+  LPC_SC->PLL0FEED = 0xAA;
+  LPC_SC->PLL0FEED = 0x55;
+
+  __enable_irq();
+}
 /* Enables (but doesn't switch to) PLL0 */
 void EnablePLL0(uint16_t m, uint8_t n) {
   __disable_irq();
@@ -128,6 +144,9 @@ void SwitchToPLL0(void) {
  */
 void SystemInit (void)
 {
+  /* Shutdown PLL0 - See User Manual §4.5.1.1 */
+  ShutdownPLL0();
+
 #ifdef USE_EXTERNAL_XTAL
   /* Enable the Main Oscillator */
   LPC_SC->SCS |= 0x0020;
