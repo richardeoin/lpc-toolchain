@@ -589,14 +589,7 @@ typedef struct
   __IO	uint32_t GDR;		// A/D Global Data Register
 	uint32_t RESERVED0[1];
   __IO	uint32_t INTEN;		// A/D Interrupt Enable Register
-  __IO	uint32_t DR0;		// A/D Channel 0 Data Register
-  __IO	uint32_t DR1;		// A/D Channel 1 Data Register
-  __IO	uint32_t DR2;		// A/D Channel 2 Data Register
-  __IO	uint32_t DR3;		// A/D Channel 3 Data Register
-  __IO	uint32_t DR4;		// A/D Channel 4 Data Register
-  __IO	uint32_t DR5;		// A/D Channel 5 Data Register
-  __IO	uint32_t DR6;		// A/D Channel 6 Data Register
-  __IO	uint32_t DR7;		// A/D Channel 7 Data Register
+  __IO	uint32_t DR[8];		// A/D Channel Data Registers
   __I	uint32_t STAT;		// A/D Status Register
 } LPC_ADC_TypeDef;
 /*@}*/ /* end of group LPC11xx_ADC */
