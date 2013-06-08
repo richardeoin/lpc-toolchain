@@ -38,8 +38,16 @@ weak void PendSV_Handler(void) alias (Default_Handler);
 weak void SysTick_Handler(void) alias (Default_Handler);
 
 /* LPC11xx Chip Interrupts */
-weak void WAKEUP_IRQHandler(void) alias (Default_Handler);
-weak void CAN_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT0_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT1_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT2_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT3_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT4_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT5_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT6_IRQHandler(void) alias (Default_Handler);
+weak void PIN_INT7_IRQHandler(void) alias (Default_Handler);
+weak void GINT0_IRQHandler(void) alias (Default_Handler);
+weak void GINT1_IRQHandler(void) alias (Default_Handler);
 weak void SSP1_IRQHandler(void) alias (Default_Handler);
 weak void I2C_IRQHandler(void) alias (Default_Handler);
 weak void TIMER16_0_IRQHandler(void) alias (Default_Handler);
@@ -48,13 +56,13 @@ weak void TIMER32_0_IRQHandler(void) alias (Default_Handler);
 weak void TIMER32_1_IRQHandler(void) alias (Default_Handler);
 weak void SSP0_IRQHandler(void) alias (Default_Handler);
 weak void UART_IRQHandler(void) alias (Default_Handler);
+weak void USB_IRQHandler(void) alias (Default_Handler);
+weak void USB_FIQHandler(void) alias (Default_Handler);
 weak void ADC_IRQHandler(void) alias (Default_Handler);
 weak void WDT_IRQHandler(void) alias (Default_Handler);
 weak void BOD_IRQHandler(void) alias (Default_Handler);
-weak void PIOINT0_IRQHandler(void) alias (Default_Handler);
-weak void PIOINT1_IRQHandler(void) alias (Default_Handler);
-weak void PIOINT2_IRQHandler(void) alias (Default_Handler);
-weak void PIOINT3_IRQHandler(void) alias (Default_Handler);
+weak void FLASH_IRQHandler(void) alias (Default_Handler);
+weak void USB_WAKEUP_IRQHandler(void) alias (Default_Handler);
 
 /* This is defined in the linker script */
 extern void __StackLimit(void);
@@ -83,20 +91,20 @@ const void *isr_vectors[] = {
   PendSV_Handler,        // The PendSV Handler
   SysTick_Handler,       // The SysTick Handler
   /* LPC11xx Chip Interrupts */
-  WAKEUP_IRQHandler,     // PIO0_0 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_1 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_2 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_3 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_4 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_5 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_6 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_7 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_8 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_9 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_10 Wakeup
-  WAKEUP_IRQHandler,     // PIO0_11 Wakeup
-  WAKEUP_IRQHandler,     // PIO1_0 Wakeup
-  CAN_IRQHandler,        // C_CAN Interrupt
+  PIN_INT0_IRQHandler,   // GPIO pin
+  PIN_INT1_IRQHandler,   // GPIO pin
+  PIN_INT2_IRQHandler,   // GPIO pin
+  PIN_INT3_IRQHandler,   // GPIO pin
+  PIN_INT4_IRQHandler,   // GPIO pin
+  PIN_INT5_IRQHandler,   // GPIO pin
+  PIN_INT6_IRQHandler,   // GPIO pin
+  PIN_INT7_IRQHandler,   // GPIO pin
+  GINT0_IRQHandler,      // GPIO Group 0
+  GINT1_IRQHandler,      // GPIO Group 1
+  0,                     // Reserved
+  0,                     // Reserved
+  0,                     // Reserved
+  0,                     // Reserved
   SSP1_IRQHandler,       // SPI/SSP1 Interrupt
   I2C_IRQHandler,        // I2C0
   TIMER16_0_IRQHandler,  // CT16B0 (16-bit Timer 0)
@@ -105,16 +113,15 @@ const void *isr_vectors[] = {
   TIMER32_1_IRQHandler,  // CT32B1 (32-bit Timer 1)
   SSP0_IRQHandler,       // SPI/SSP0 Interrupt
   UART_IRQHandler,       // UART0
-  0,                     // Reserved
-  0,                     // Reserved
+  USB_IRQHandler,        // USB IRQ
+  USB_FIQHandler,        // USB FIQ
   ADC_IRQHandler,        // ADC   (A/D Converter)
   WDT_IRQHandler,        // WDT   (Watchdog Timer)
   BOD_IRQHandler,        // BOD   (Brownout Detect)
+  FLASH_IRQHandler,      // Flash/EEPROM interface
   0,                     // Reserved
-  PIOINT3_IRQHandler,    // PIO INT3
-  PIOINT2_IRQHandler,    // PIO INT2
-  PIOINT1_IRQHandler,    // PIO INT1
-  PIOINT0_IRQHandler,    // PIO INT0
+  0,                     // Reserved
+  USB_WAKEUP_IRQHandler, // USB Wakeup
 };
 
 /* These are defined in the linker script */
