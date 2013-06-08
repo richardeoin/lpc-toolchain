@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     system_LPC11xx.c
+ * @file     system_LPC11Uxx.c
  * @brief    CMSIS Cortex-M0 Device Peripheral Access Layer Source File for
- *           Device LPC11xx
+ *           Device LPC11Uxx
  * @version  V3.10
  * @date     23. November 2012
  *
@@ -9,7 +9,7 @@
  *
  ******************************************************************************/
 /* Copyright (c) 2012 ARM LIMITED
-   Copyright (c) 2013 Richard Meadows - Added code for LPC11xx
+   Copyright (c) 2013 Richard Meadows - Added code for LPC11Uxx
 
    All rights reserved.
    Redistribution and use in source and binary forms, with or without
@@ -38,8 +38,7 @@
 
 
 #include <stdint.h>
-#include "LPC11xx.h"
-
+#include "LPC11Uxx.h"
 
 /*----------------------------------------------------------------------------
   DEFINES
@@ -65,7 +64,7 @@ uint32_t SystemCoreClock = __XTAL;  /*!< System Clock Frequency (Core Clock)*/
  *----------------------------------------------------------------------------*/
 int SystemPLLInputClock(void) {              /* Get the frequency of PLL I/P  */
   switch (LPC_SYSCON->SYSPLLCLKSEL & 0x03) {
-    /* Set User Manual §3.5.9 System PLL Clock Source Control Register */
+    /* Set User Manual §3.5.10 System PLL clock source control register */
     case 0x0: return __IRC; /* IRC Oscillator */
     case 0x1: return __XTAL; /* System Oscillator */
     default: return 0; /* Reserved */
@@ -76,7 +75,7 @@ int SystemPLLOutputClock(void) {             /* Get the frequency of PLL O/P  */
   return ((LPC_SYSCON->SYSPLLCTRL & 0x1F) + 1) * SystemPLLInputClock();
 }
 int WatchdogFClkAna(void) {                  /* Get the W. Osc Analog O/P     */
-  /* See User Manual §3.5.6 Watchdog oscillator control register */
+  /* See User Manual §3.5.8 Watchdog oscillator control register */
   switch ((LPC_SYSCON->WDTOSCCTRL & 0x01E0) >> 5) {
     case 0x1: return 500000;
     case 0x2: return 800000;
@@ -97,12 +96,12 @@ int WatchdogFClkAna(void) {                  /* Get the W. Osc Analog O/P     */
   }
 }
 int WatchdogOscClock(void) {                 /* Get the frequency of W. Osc   */
-  /* See User Manual §3.5.6 Watchdog oscillator control register */
+  /* See User Manual §3.5.8 Watchdog oscillator control register */
   return WatchdogFClkAna() * (((LPC_SYSCON->WDTOSCCTRL & 0x1F) + 1) * 2);
 }
 void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
 {
-  /* See LPC11xx User Manual §3.4 Clock Generation for more details */
+  /* See LPC11Uxx User Manual §3.4 Clocking and power control */
 
   /* Switch based on the Main Clock Selection */
   switch (LPC_SYSCON->MAINCLKSEL & 0x03) {
@@ -117,7 +116,7 @@ void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
   }
 
   /* Account for the System Clock Divider */
-  /* See User Manual §3.5.13 System AHB Clock Register */
+  /* See User Manual §3.5.16 System clock divider register */
   if ((LPC_SYSCON->SYSAHBCLKDIV & 0xFF) > 0) {
     SystemCoreClock /= (LPC_SYSCON->SYSAHBCLKDIV & 0xFF);
   } else {
