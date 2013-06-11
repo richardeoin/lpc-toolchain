@@ -81,18 +81,18 @@ SECTIONS
 		*(.rodata*)
 
 		KEEP(*(.eh_frame*))
-	} > FLASH
+	} > FLASHA
 
 	.ARM.extab : 
 	{
 		*(.ARM.extab* .gnu.linkonce.armextab.*)
-	} > FLASH
+	} > FLASHA
 
 	__exidx_start = .;
 	.ARM.exidx :
 	{
 		*(.ARM.exidx* .gnu.linkonce.armexidx.*)
-	} > FLASH
+	} > FLASHA
 	__exidx_end = .;
 
 	__etext = .;
