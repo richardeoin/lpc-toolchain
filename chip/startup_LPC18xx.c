@@ -29,12 +29,12 @@
 #define alias(f) __attribute__ ((alias(#f)))
 #define weak __attribute__ ((weak))
 
-/* Cortex-M# Core Interrupts */
+/* Cortex-M3 Core Interrupts */
 weak void Reset_Handler(void);
 weak void NMI_Handler(void) alias (Default_Handler);
 weak void HardFault_Handler(void);
 
-/* LPCxxxx Chip Interrupts */
+/* LPC18xx Chip Interrupts */
 
 /* This is defined in the linker script */
 extern void __StackLimit(void);

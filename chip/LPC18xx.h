@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     LPCxxxx.h
- * @brief    CMSIS Cortex-M# Core Peripheral Access Layer Header File for
- *           Device LPCxxxx
+ * @file     LPC18xx.h
+ * @brief    CMSIS Cortex-M3 Core Peripheral Access Layer Header File for
+ *           Device LPC18xx
  * @version  V3.10
  * @date     23. November 2012
  *
@@ -9,7 +9,7 @@
  *
  ******************************************************************************/
 /* Copyright (c) 2012 ARM LIMITED
-   Copyright (c) 2013 Richard Meadows - Added code for LPCxxxx
+   Copyright (c) 2013 Richard Meadows - Added code for LPC18xx
 
    All rights reserved.
    Redistribution and use in source and binary forms, with or without
@@ -37,16 +37,15 @@
    ---------------------------------------------------------------------------*/
 
 
-#ifndef LPCxxxx_H      /* ToDo: replace 'LPCxxxx' with your device name */
-#define LPCxxxx_H
+#ifndef LPC18xx_H      /* ToDo: replace 'LPC18xx' with your device name */
+#define LPC18xx_H
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
-/* ToDo: replace 'LPCxxxx' with your device name; add your doxyGen comment   */
-/** @addtogroup LPCxxxx_Definitions LPCxxxx Definitions
-  This file defines all structures and symbols for LPCxxxx:
+/** @addtogroup LPC18xx_Definitions LPC18xx Definitions
+  This file defines all structures and symbols for LPC18xx:
     - registers and bitfields
     - peripheral base address
     - peripheral ID
@@ -58,8 +57,8 @@
 /******************************************************************************/
 /*                Processor and Core Peripherals                              */
 /******************************************************************************/
-/** @addtogroup LPCxxxx_CMSIS Device CMSIS Definitions
-  Configuration of the Cortex-M# Processor and Core Peripherals
+/** @addtogroup LPC18xx_CMSIS Device CMSIS Definitions
+  Configuration of the Cortex-M3 Processor and Core Peripherals
   @{
 */
 
@@ -71,16 +70,8 @@
 
 typedef enum IRQn
 {
-/******  Cortex-M# Processor Exceptions Numbers ***************************************************/
+/******  Cortex-M3 Processor Exceptions Numbers ***************************************************/
 
-/* ToDo: use this Cortex interrupt numbers if your device is a CORTEX-M0 device                   */
-  NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt                        */
-  HardFault_IRQn                = -13,      /*!<  3 Hard Fault Interrupt                          */
-  SVCall_IRQn                   = -5,       /*!< 11 SV Call Interrupt                             */
-  PendSV_IRQn                   = -2,       /*!< 14 Pend SV Interrupt                             */
-  SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt                         */
-
-/* ToDo: use this Cortex interrupt numbers if your device is a CORTEX-M3 / Cortex-M4 device       */
   NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt                        */
   MemoryManagement_IRQn         = -12,      /*!<  4 Memory Management Interrupt                   */
   BusFault_IRQn                 = -11,      /*!<  5 Bus Fault Interrupt                           */
@@ -91,10 +82,7 @@ typedef enum IRQn
   SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt                         */
 
 /******  Device Specific Interrupt Numbers ********************************************************/
-/* ToDo: add here your device specific external interrupt numbers
-         according the interrupt handlers defined in startup_Device.s
-         eg.: Interrupt for Timer#1       TIM1_IRQHandler   ->   TIM1_IRQn                        */
-  <DeviceInterrupt>_IRQn        = 0,        /*!< Device Interrupt                                 */
+
 } IRQn_Type;
 
 
@@ -104,37 +92,24 @@ typedef enum IRQn
  * ==========================================================================
  */
 
-/* Configuration of the Cortex-M# Processor and Core Peripherals */
-/* ToDo: set the defines according your Device                                                    */
-/* ToDo: define the correct core revision
-         __CM0_REV if your device is a CORTEX-M0 device
-         __CM3_REV if your device is a CORTEX-M3 device
-         __CM4_REV if your device is a CORTEX-M4 device                                           */
-#define __CM#_REV                 0x0201    /*!< Core Revision r2p1                               */
-#define __NVIC_PRIO_BITS          2         /*!< Number of Bits used for Priority Levels          */
+/* Configuration of the Cortex-M3 Processor and Core Peripherals */
+#define __CM3_REV                 0x0201    /*!< Core Revision r2p1                               */
+#define __NVIC_PRIO_BITS          4         /*!< Number of Bits used for Priority Levels          */
 #define __Vendor_SysTickConfig    0         /*!< Set to 1 if different SysTick Config is used     */
-#define __MPU_PRESENT             0         /*!< MPU present or not                               */
-/* ToDo: define __FPU_PRESENT if your devise is a CORTEX-M4                                       */
-#define __FPU_PRESENT             0        /*!< FPU present or not                                */
+#define __MPU_PRESENT             1         /*!< MPU present or not                               */
 
-/*@}*/ /* end of group LPCxxxx_CMSIS */
+/*@}*/ /* end of group LPC18xx_CMSIS */
 
 
-/* ToDo: include the correct core_cm#.h file
-         core_cm0.h if your device is a CORTEX-M0 device
-         core_cm3.h if your device is a CORTEX-M3 device
-         core_cm4.h if your device is a CORTEX-M4 device                                          */
-#include <core_cm#.h>                       /* Cortex-M# processor and core peripherals           */
-/* ToDo: include your system_LPCxxxx.h file
-         replace 'LPCxxxx' with your device name                                                 */
-#include "system_LPCxxxx.h"                /* LPCxxxx System  include file                      */
+#include <core_cm3.h>                       /* Cortex-M3 processor and core peripherals           */
+#include "system_LPC18xx.h"                /* LPC18xx System  include file                      */
 
 
 /******************************************************************************/
 /*                Device Specific Peripheral registers structures             */
 /******************************************************************************/
-/** @addtogroup LPCxxxx_Peripherals LPCxxxx Peripherals
-  LPCxxxx Device Specific Peripheral registers structures
+/** @addtogroup LPC18xx_Peripherals LPC18xx Peripherals
+  LPC18xx Device Specific Peripheral registers structures
   @{
 */
 
@@ -142,35 +117,14 @@ typedef enum IRQn
 #pragma anon_unions
 #endif
 
-/* ToDo: add here your device specific peripheral access structure typedefs
-         following is an example for a timer                                  */
 
-/*------------- 16-bit Timer/Event Counter (TMR) -----------------------------*/
-/** @addtogroup LPCxxxx_TMR LPCxxxx 16-bit Timer/Event Counter (TMR)
-  @{
-*/
-typedef struct
-{
-  __IO uint32_t EN;                         /*!< Offset: 0x0000   Timer Enable Register           */
-  __IO uint32_t RUN;                        /*!< Offset: 0x0004   Timer RUN Register              */
-  __IO uint32_t CR;                         /*!< Offset: 0x0008   Timer Control Register          */
-  __IO uint32_t MOD;                        /*!< Offset: 0x000C   Timer Mode Register             */
-       uint32_t RESERVED0[1];
-  __IO uint32_t ST;                         /*!< Offset: 0x0014   Timer Status Register           */
-  __IO uint32_t IM;                         /*!< Offset: 0x0018   Interrupt Mask Register         */
-  __IO uint32_t UC;                         /*!< Offset: 0x001C   Timer Up Counter Register       */
-  __IO uint32_t RG0                         /*!< Offset: 0x0020   Timer Register                  */
-       uint32_t RESERVED1[2];
-  __IO uint32_t CP;                         /*!< Offset: 0x002C   Capture register                */
-} <DeviceAbbreviation>_TMR_TypeDef;
-/*@}*/ /* end of group LPCxxxx_TMR */
 
 
 #if defined ( __CC_ARM   )
 #pragma no_anon_unions
 #endif
 
-/*@}*/ /* end of group LPCxxxx_Peripherals */
+/*@}*/ /* end of group LPC18xx_Peripherals */
 
 
 /******************************************************************************/
@@ -178,20 +132,11 @@ typedef struct
 /******************************************************************************/
 /* ToDo: add here your device peripherals base addresses
          following is an example for timer                                    */
-/** @addtogroup LPCxxxx_MemoryMap LPCxxxx Memory Mapping
+/** @addtogroup LPC18xx_MemoryMap LPC18xx Memory Mapping
   @{
 */
 
-/* Peripheral and SRAM base address */
-#define <DeviceAbbreviation>_FLASH_BASE       (0x00000000UL)                              /*!< (FLASH     ) Base Address */
-#define <DeviceAbbreviation>_SRAM_BASE        (0x20000000UL)                              /*!< (SRAM      ) Base Address */
-#define <DeviceAbbreviation>_PERIPH_BASE      (0x40000000UL)                              /*!< (Peripheral) Base Address */
-
-/* Peripheral memory map */
-#define <DeviceAbbreviation>TIM0_BASE         (<DeviceAbbreviation>_PERIPH_BASE)          /*!< (Timer0    ) Base Address */
-#define <DeviceAbbreviation>TIM1_BASE         (<DeviceAbbreviation>_PERIPH_BASE + 0x0800) /*!< (Timer1    ) Base Address */
-#define <DeviceAbbreviation>TIM2_BASE         (<DeviceAbbreviation>_PERIPH_BASE + 0x1000) /*!< (Timer2    ) Base Address */
-/*@}*/ /* end of group LPCxxxx_MemoryMap */
+/*@}*/ /* end of group LPC18xx_MemoryMap */
 
 
 /******************************************************************************/
@@ -200,19 +145,16 @@ typedef struct
 /* ToDo: add here your device peripherals pointer definitions
          following is an example for timer                                    */
 
-/** @addtogroup LPCxxxx_PeripheralDecl LPCxxxx Peripheral Declaration
+/** @addtogroup LPC18xx_PeripheralDecl LPC18xx Peripheral Declaration
   @{
 */
 
-#define <DeviceAbbreviation>_TIM0        ((<DeviceAbbreviation>_TMR_TypeDef *) <DeviceAbbreviation>TIM0_BASE)
-#define <DeviceAbbreviation>_TIM1        ((<DeviceAbbreviation>_TMR_TypeDef *) <DeviceAbbreviation>TIM0_BASE)
-#define <DeviceAbbreviation>_TIM2        ((<DeviceAbbreviation>_TMR_TypeDef *) <DeviceAbbreviation>TIM0_BASE)
-/*@}*/ /* end of group LPCxxxx_PeripheralDecl */
+/*@}*/ /* end of group LPC18xx_PeripheralDecl */
 
-/*@}*/ /* end of group LPCxxxx_Definitions */
+/*@}*/ /* end of group LPC18xx_Definitions */
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  /* LPCxxxx_H */
+#endif  /* LPC18xx_H */

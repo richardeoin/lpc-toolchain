@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     system_LPCxxxx.h
- * @brief    CMSIS Cortex-M# Device Peripheral Access Layer Header File for
- *           Device LPCxxxx
+ * @file     system_LPC18xx.h
+ * @brief    CMSIS Cortex-M3 Device Peripheral Access Layer Header File for
+ *           Device LPC18xx
  * @version  V3.10
  * @date     23. November 2012
  *
@@ -9,7 +9,7 @@
  *
  ******************************************************************************/
 /* Copyright (c) 2012 ARM LIMITED
-   Copyright (c) 2013 Richard Meadows - Added code for LPCxxxx
+   Copyright (c) 2013 Richard Meadows - Added code for LPC18xx
 
    All rights reserved.
    Redistribution and use in source and binary forms, with or without
@@ -37,8 +37,8 @@
    ---------------------------------------------------------------------------*/
 
 
-#ifndef SYSTEM_LPCxxxx_H   /* ToDo: replace 'LPCxxxx' with your device name */
-#define SYSTEM_LPCxxxx_H
+#ifndef SYSTEM_LPC18xx_H
+#define SYSTEM_LPC18xx_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -75,4 +75,4 @@ extern void SystemCoreClockUpdate (void);
 }
 #endif
 
-#endif /* SYSTEM_LPCxxxx_H */
+#endif /* SYSTEM_LPC18xx_H */

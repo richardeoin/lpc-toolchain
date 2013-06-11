@@ -1,7 +1,7 @@
 /**************************************************************************//**
- * @file     system_LPCxxxx.c
- * @brief    CMSIS Cortex-M# Device Peripheral Access Layer Source File for
- *           Device LPCxxxx
+ * @file     system_LPC18xx.c
+ * @brief    CMSIS Cortex-M3 Device Peripheral Access Layer Source File for
+ *           Device LPC18xx
  * @version  V3.10
  * @date     23. November 2012
  *
@@ -9,7 +9,7 @@
  *
  ******************************************************************************/
 /* Copyright (c) 2012 ARM LIMITED
-   Copyright (c) 2013 Richard Meadows - Added code for LPCxxxx
+   Copyright (c) 2013 Richard Meadows - Added code for LPC18xx
 
    All rights reserved.
    Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@
 
 
 #include <stdint.h>
-#include "LPCxxxx.h"
+#include "LPC18xx.h"
 
 
 /*----------------------------------------------------------------------------
