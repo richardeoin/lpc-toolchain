@@ -1745,7 +1745,8 @@ typedef struct
   @{
 */
 
-
+#define LPC_FLASH_BASE		(0x1A0000000UL)
+#define LPC_SRAM_BASE		(0x100000000UL)
 
 /*@}*/ /* end of group LPC18xx_MemoryMap */
 
