@@ -5,9 +5,7 @@ compilation, but the
 [LPCXpresso IDE](http://www.nxp.com/techzones/microcontrollers-techzone/tools-ecosystem/lpcxpresso.html)
 is still required for downloading and debugging via NXP's LPC-Link.
 
-**The master branch is not intended to be built - Rather it is just a
-  base that examples for particular chips can be built upon. See the
-  branches in the drop-down menu above for working examples.**
+** This branch is intended for the LPC110x series of devices, and the LPC1102 in particular. **
 
 ## Prerequisites ##
 
