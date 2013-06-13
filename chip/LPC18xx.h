@@ -317,8 +317,8 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t PM;		// CCU1 power mode register
-  __I	uint32_t BASE_STAT;		// CCU1 base clocks status register
+  __IO	uint32_t PM;				// CCU1 power mode register
+  __I	uint32_t BASE_STAT;			// CCU1 base clocks status register
 	uint32_t RESERVED0[62];
   __IO	uint32_t CLK_APB3_BUS_CFG;		// CLK_APB3_BUS clock configuration
   __I	uint32_t CLK_APB3_BUS_STAT;		// CLK_APB3_BUS clock status register
@@ -335,8 +335,8 @@ typedef struct
 	uint32_t RESERVED1[52];
   __IO	uint32_t CLK_APB1_BUS_CFG;		// CLK_APB1_BUS configuration register
   __I	uint32_t CLK_APB1_BUS_STAT;		// CLK_APB1_BUS status register
-  __IO	uint32_t CLK_APB1_MOTOCON;		// CLK_APB1_MOTOCON configuration
-  __I	uint32_t CLK_APB1_MOTOCON;		// CLK_APB1_MOTOCON status register
+  __IO	uint32_t CLK_APB1_MOTOCONPWM_CFG;	// CLK_APB1_MOTOCON configuration
+  __I	uint32_t CLK_APB1_MOTOCONPWM_STAT;	// CLK_APB1_MOTOCON status register
   __IO	uint32_t CLK_APB1_I2C0_CFG;		// CLK_APB1_I2C0 configuration register
   __I	uint32_t CLK_APB1_I2C0_STAT;		// CLK_APB1_I2C0 status register
   __IO	uint32_t CLK_APB1_I2S_CFG;		// CLK_APB1_I2S configuration register
@@ -344,7 +344,7 @@ typedef struct
   __IO	uint32_t CLK_APB1_CAN1_CFG;		// CLK_APB3_CAN1 configuration register
   __I	uint32_t CLK_APB1_CAN1_STAT;		// CLK_APB3_CAN1 status register
 	uint32_t RESERVED2[54];
-  __IO	uint32_t CLK_SPIFI_CFG;		// CLK_SPIFI configuration register
+  __IO	uint32_t CLK_SPIFI_CFG;			// CLK_SPIFI configuration register
   __I	uint32_t CLK_SPIFI_STAT;		// CLK_SPIFI status register
 	uint32_t RESERVED3[62];
   __IO	uint32_t CLK_M3_BUS_CFG;		// CLK_M3_BUS configuration register
@@ -411,14 +411,14 @@ typedef struct
   __IO	uint32_t CLK_M3_QEI_CFG;		// CLK_M3_QEI configuration register
   __I	uint32_t CLK_M3_QEI_STAT;		// CLK_M3_QEI status register
 	uint32_t RESERVED7[114];
-  __IO	uint32_t CLK_USB0_CFG;		// CLK_USB0 configuration register
-  __I	uint32_t CLK_USB0_STAT;		// CLK_USB0 status register
+  __IO	uint32_t CLK_USB0_CFG;			// CLK_USB0 configuration register
+  __I	uint32_t CLK_USB0_STAT;			// CLK_USB0 status register
 	uint32_t RESERVED8[62];
-  __IO	uint32_t CLK_USB1_CFG;		// CLK_USB1 configuration register
-  __I	uint32_t CLK_USB1_STAT;		// CLK_USB1 status register
+  __IO	uint32_t CLK_USB1_CFG;			// CLK_USB1 configuration register
+  __I	uint32_t CLK_USB1_STAT;			// CLK_USB1 status register
 	uint32_t RESERVED9[126];
-  __IO	uint32_t CLK_VADC_CFG;		// CLK_VADC configuration register
-  __I	uint32_t CLK_VADC_STAT;		// CLK_VADC status register
+  __IO	uint32_t CLK_VADC_CFG;			// CLK_VADC configuration register
+  __I	uint32_t CLK_VADC_STAT;			// CLK_VADC status register
 } LPC_CCU1_TypeDef;
 /*@}*/ /* end of group LPC18xx_CCU1 */
 
@@ -428,11 +428,11 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t PM;		// CCU2 power mode register
-  __I	uint32_t BASE_STAT;		// CCU2 base clocks status register
+  __IO	uint32_t PM;				// CCU2 power mode register
+  __I	uint32_t BASE_STAT;			// CCU2 base clocks status register
 	uint32_t RESERVED0[62];
-  __IO	uint32_t CLK_APLL_CFG;		// CLK_APLL configuration register
-  __I	uint32_t CLK_APLL_STAT;		// CLK_APLL status register
+  __IO	uint32_t CLK_APLL_CFG;			// CLK_APLL configuration register
+  __I	uint32_t CLK_APLL_STAT;			// CLK_APLL status register
 	uint32_t RESERVED1[62];
   __IO	uint32_t CLK_APB2_USART3_CFG;		// CLK_APB2_UART3 configuration register
   __I	uint32_t CLK_APB2_USART3_STAT;		// CLK_APB2_UART3 status register
@@ -574,7 +574,6 @@ typedef struct
   __IO	uint32_t SFSP9_4;		// Pin configuration register for pin P9_4
   __IO	uint32_t SFSP9_5;		// Pin configuration register for pin P9_5
   __IO	uint32_t SFSP9_6;		// Pin configuration register for pin P9_6
-  __IO	uint32_t SFSP9_3;		// Pin configuration register for pin P9_3
 	uint32_t RESERVED10[24];
   __IO	uint32_t SFSPA_0;		// Pin configuration register for pin PA_0
   __IO	uint32_t SFSPA_1;		// Pin configuration register for pin PA_1
@@ -702,10 +701,10 @@ typedef struct
   __IO	uint32_t CTIN_5_IN;		// SCT CTIN_5 capture input multiplexer
   __IO	uint32_t CTIN_6_IN;		// SCT CTIN_6 capture input multiplexer
   __IO	uint32_t CTIN_7_IN;		// SCT CTIN_7 capture input multiplexer
-  __IO	uint32_t VADC_TRIGGER_IN;		// VADC trigger input multiplexer
-  __IO	uint32_t EVENTROUTER_13_IN;		// Event router input 13 multiplexer
-  __IO	uint32_t EVENTROUTER_14_IN;		// Event router input 14 multiplexer
-  __IO	uint32_t EVENTROUTER_16_IN;		// Event router input 16 multiplexer
+  __IO	uint32_t VADC_TRIGGER_IN;	// VADC trigger input multiplexer
+  __IO	uint32_t EVENTROUTER_13_IN;	// Event router input 13 multiplexer
+  __IO	uint32_t EVENTROUTER_14_IN;	// Event router input 14 multiplexer
+  __IO	uint32_t EVENTROUTER_16_IN;	// Event router input 16 multiplexer
   __IO	uint32_t ADCSTART0_IN;		// ADC0 and ADC1 start0 input multiplexer
   __IO	uint32_t ADCSTART1_IN;		// ADC0 and ADC1 start1 input multiplexer
 } LPC_GIMA_TypeDef;
@@ -736,7 +735,7 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t CTRL;		// GPIO grouped interrupt control register
+  __IO	uint32_t CTRL;			// GPIO grouped interrupt control register
 	uint32_t RESERVED0[7];
   __IO	uint32_t PORT_POL[8];		// GPIO grouped interrupt polarity register
   __IO	uint32_t PORT_ENA[8];		// GPIO grouped interrupt enable register
@@ -788,55 +787,18 @@ typedef struct
   __IO	uint32_t SOFTLBREQ;		// DMA Software Last Burst Request Register
   __IO	uint32_t SOFTLSREQ;		// DMA Software Last Single Request Register
   __IO	uint32_t CONFIG;		// DMA Configuration Register
-  __IO	uint32_t SYNC;		// DMA Synchronization Register
+  __IO	uint32_t SYNC;			// DMA Synchronization Register
 	uint32_t RESERVED0[50];
-  __IO	uint32_t SRCADDR0;		// DMA Channel 0 Source Address Register
-  __IO	uint32_t DESTADDR0;		// DMA Channel 0 Destination Address Register
-  __IO	uint32_t LLI0;		// DMA Channel 0 Linked List Item Register
-  __IO	uint32_t CONTROL0;		// DMA Channel 0 Control Register
-  __IO	uint32_t CONFIG0;		// DMA Channel 0 Configuration
-	uint32_t RESERVED1[3];
-  __IO	uint32_t SRCADDR1;		// DMA Channel 1 Source Address Register
-  __IO	uint32_t DESTADDR1;		// DMA Channel 1 Destination Address Register
-  __IO	uint32_t LLI1;		// DMA Channel 1 Linked List Item Register
-  __IO	uint32_t CONTROL1;		// DMA Channel 1 Control Register
-  __IO	uint32_t CONFIG1;		// DMA Channel 1 Configuration Register
-	uint32_t RESERVED2[3];
-  __IO	uint32_t SRCADDR2;		// DMA Channel 2 Source Address Register
-  __IO	uint32_t DESTADDR2;		// DMA Channel 2 Destination Address Register
-  __IO	uint32_t LLI2;		// DMA Channel 2 Linked List Item Register
-  __IO	uint32_t CONTROL2;		// DMA Channel 2 Control Register
-  __IO	uint32_t CONFIG2;		// DMA Channel 2 Configuration
-	uint32_t RESERVED3[3];
-  __IO	uint32_t SRCADDR3;		// DMA Channel 3 Source Address Register
-  __IO	uint32_t DESTADDR3;		// DMA Channel 3 Destination Address Register
-  __IO	uint32_t LLI3;		// DMA Channel 3 Linked List Item Register
-  __IO	uint32_t CONTROL3;		// DMA Channel 3 Control Register
-  __IO	uint32_t CONFIG3;		// DMA Channel 3 Configuration Register
-	uint32_t RESERVED4[3];
-  __IO	uint32_t SRCADDR4;		// DMA Channel 4 Source Address Register
-  __IO	uint32_t DESTADDR4;		// DMA Channel 4 Destination Address Register
-  __IO	uint32_t LLI4;		// DMA Channel 4 Linked List Item Register
-  __IO	uint32_t CONTROL4;		// DMA Channel 4 Control Register
-  __IO	uint32_t CONFIG4;		// DMA Channel 4 Configuration
-	uint32_t RESERVED5[3];
-  __IO	uint32_t SRCADDR5;		// DMA Channel 5 Source Address Register
-  __IO	uint32_t DESTADDR5;		// DMA Channel 5 Destination Address Register
-  __IO	uint32_t LLI5;		// DMA Channel 5 Linked List Item Register
-  __IO	uint32_t CONTROL5;		// DMA Channel 5 Control Register
-  __IO	uint32_t CONFIG5;		// DMA Channel 5 Configuration Register
-	uint32_t RESERVED6[3];
-  __IO	uint32_t SRCADDR6;		// DMA Channel 6 Source Address Register
-  __IO	uint32_t DESTADDR6;		// DMA Channel 6 Destination Address Register
-  __IO	uint32_t LLI6;		// DMA Channel 6 Linked List Item Register
-	uint32_t RESERVED7[1];
-  __IO	uint32_t CONFIG6;		// DMA Channel 6 Configuration Register
-	uint32_t RESERVED8[3];
-  __IO	uint32_t SRCADDR7;		// DMA Channel 7 Source Address Register
-  __IO	uint32_t DESTADDR7;		// DMA Channel 7 Destination Address Register
-  __IO	uint32_t LLI7;		// DMA Channel 7 Linked List Item Register
-  __IO	uint32_t CONTROL7;		// DMA Channel 7 Control Register
-  __IO	uint32_t CONFIG7;		// DMA Channel 7 Configuration Register
+
+  struct {
+    __IO uint32_t SRCADDR;		// DMA Channel Source Address Register
+    __IO uint32_t DESTADDR;		// DMA Channel Destination Address Register
+    __IO uint32_t LLI;			// DMA Channel Linked List Item Register
+    __IO uint32_t CONTROL;		// DMA Channel Control Register
+    __IO uint32_t CONFIG;		// DMA Channel Configuration
+	 uint32_t RESERVED[3];
+  } CHANNEL[8];
+
 } LPC_GPDMA_TypeDef;
 /*@}*/ /* end of group LPC18xx_GPDMA */
 
@@ -848,40 +810,40 @@ typedef struct
 {
   __IO	uint32_t CTRL;		// Control Register
   __IO	uint32_t PWREN;		// Power Enable Register
-  __IO	uint32_t CLKDIV;		// Clock Divider Register
-  __IO	uint32_t CLKSRC;		// SD Clock Source Register
-  __IO	uint32_t CLKENA;		// Clock Enable Register
+  __IO	uint32_t CLKDIV;	// Clock Divider Register
+  __IO	uint32_t CLKSRC;	// SD Clock Source Register
+  __IO	uint32_t CLKENA;	// Clock Enable Register
   __IO	uint32_t TMOUT;		// Time-out Register
   __IO	uint32_t CTYPE;		// Card Type Register
-  __IO	uint32_t BLKSIZ;		// Block Size Register
-  __IO	uint32_t BYTCNT;		// Byte Count Register
-  __IO	uint32_t INTMASK;		// Interrupt Mask Register
-  __IO	uint32_t CMDARG;		// Command Argument Register
+  __IO	uint32_t BLKSIZ;	// Block Size Register
+  __IO	uint32_t BYTCNT;	// Byte Count Register
+  __IO	uint32_t INTMASK;	// Interrupt Mask Register
+  __IO	uint32_t CMDARG;	// Command Argument Register
   __IO	uint32_t CMD;		// Command Register
   __I	uint32_t RESP0;		// Response Register 0
   __I	uint32_t RESP1;		// Response Register 1
   __I	uint32_t RESP2;		// Response Register 2
   __I	uint32_t RESP3;		// Response Register 3
-  __I	uint32_t MINTSTS;		// Masked Interrupt Status Register
-  __IO	uint32_t RINTSTS;		// Raw Interrupt Status Register
-  __I	uint32_t STATUS;		// Status Register
-  __IO	uint32_t FIFOTH;		// FIFO Threshold Watermark Register
-  __I	uint32_t CDETECT;		// Card Detect Register
-  __I	uint32_t WRTPRT;		// Write Protect Register
+  __I	uint32_t MINTSTS;	// Masked Interrupt Status Register
+  __IO	uint32_t RINTSTS;	// Raw Interrupt Status Register
+  __I	uint32_t STATUS;	// Status Register
+  __IO	uint32_t FIFOTH;	// FIFO Threshold Watermark Register
+  __I	uint32_t CDETECT;	// Card Detect Register
+  __I	uint32_t WRTPRT;	// Write Protect Register
 	uint32_t RESERVED0[1];
-  __I	uint32_t TCBCNT;		// Transferred CIU Card Byte Count Register
-  __I	uint32_t TBBCNT;		// Transferred Host to BIU-FIFO Byte Count
-  __IO	uint32_t DEBNCE;		// Debounce Count Register
+  __I	uint32_t TCBCNT;	// Transferred CIU Card Byte Count Register
+  __I	uint32_t TBBCNT;	// Transferred Host to BIU-FIFO Byte Count
+  __IO	uint32_t DEBNCE;	// Debounce Count Register
 	uint32_t RESERVED1[4];
   __IO	uint32_t RST_N;		// Hardware Reset
 	uint32_t RESERVED2[1];
   __IO	uint32_t BMOD;		// Bus Mode Register
-  __O	uint32_t PLDMND;		// Poll Demand Register
-  __IO	uint32_t DBADDR;		// Descriptor List Base Address Register
+  __O	uint32_t PLDMND;	// Poll Demand Register
+  __IO	uint32_t DBADDR;	// Descriptor List Base Address Register
   __IO	uint32_t IDSTS;		// Internal DMAC Status Register
-  __IO	uint32_t IDINTEN;		// Internal DMAC Interrupt Enable Register
-  __I	uint32_t DSCADDR;		// Current Host Descriptor Address Register
-  __I	uint32_t BUFADDR;		// Current Buffer Descriptor Address Register
+  __IO	uint32_t IDINTEN;	// Internal DMAC Interrupt Enable Register
+  __I	uint32_t DSCADDR;	// Current Host Descriptor Address Register
+  __I	uint32_t BUFADDR;	// Current Buffer Descriptor Address Register
 } LPC_SDMMC_TypeDef;
 /*@}*/ /* end of group LPC18xx_SDMMC */
 
@@ -895,7 +857,7 @@ typedef struct
   __IO	uint32_t CMD;		// SPIFI command register
   __IO	uint32_t ADDR;		// SPIFI address register
   __IO	uint32_t IDATA;		// SPIFI intermediate data register
-  __IO	uint32_t CLIMIT;		// SPIFI cache limit register
+  __IO	uint32_t CLIMIT;	// SPIFI cache limit register
   __IO	uint32_t DATA;		// SPIFI data register
   __IO	uint32_t MCMD;		// SPIFI memory command register
   __IO	uint32_t STAT;		// SPIFI status register
@@ -912,9 +874,9 @@ typedef struct
   __I	uint32_t STATUS;		// Provides EMC status information
   __IO	uint32_t CONFIG;		// Configures operation of the memory
 	uint32_t RESERVED0[5];
-  __IO	uint32_t DYNAMICCONTROL;		// Controls dynamic memory operation
-  __IO	uint32_t DYNAMICREFRESH;		// Configures dynamic memory refresh
-  __IO	uint32_t DYNAMICREADCONFIG;		// Configures the dynamic memory read
+  __IO	uint32_t DYNAMICCONTROL;	// Controls dynamic memory operation
+  __IO	uint32_t DYNAMICREFRESH;	// Configures dynamic memory refresh
+  __IO	uint32_t DYNAMICREADCONFIG;	// Configures the dynamic memory read
 	uint32_t RESERVED1[1];
   __IO	uint32_t DYNAMICRP;		// Selects the precharge command period
   __IO	uint32_t DYNAMICRAS;		// Selects the active to precharge command
@@ -928,51 +890,51 @@ typedef struct
   __IO	uint32_t DYNAMICRRD;		// Selects the active bank A to active bank B 0xF
   __IO	uint32_t DYNAMICMRD;		// Selects the load mode register to active
 	uint32_t RESERVED2[9];
-  __IO	uint32_t STATICEXTENDEDWAIT;		// Selects time for long static memory read
+  __IO	uint32_t STATICEXTENDEDWAIT;	// Selects time for long static memory read
 	uint32_t RESERVED3[31];
-  __IO	uint32_t DYNAMICCONFIG0;		// Selects the configuration information for
-  __IO	uint32_t DYNAMICRASCAS0;		// Selects the RAS and CAS latencies for
+  __IO	uint32_t DYNAMICCONFIG0;	// Selects the configuration information for
+  __IO	uint32_t DYNAMICRASCAS0;	// Selects the RAS and CAS latencies for
 	uint32_t RESERVED4[6];
-  __IO	uint32_t DYNAMICCONFIG1;		// Selects the configuration information for
-  __IO	uint32_t DYNAMICRASCAS1;		// Selects the RAS and CAS latencies for
+  __IO	uint32_t DYNAMICCONFIG1;	// Selects the configuration information for
+  __IO	uint32_t DYNAMICRASCAS1;	// Selects the RAS and CAS latencies for
 	uint32_t RESERVED5[6];
-  __IO	uint32_t DYNAMICCONFIG2;		// Selects the configuration information for
-  __IO	uint32_t DYNAMICRASCAS2;		// Selects the RAS and CAS latencies for
+  __IO	uint32_t DYNAMICCONFIG2;	// Selects the configuration information for
+  __IO	uint32_t DYNAMICRASCAS2;	// Selects the RAS and CAS latencies for
 	uint32_t RESERVED6[6];
-  __IO	uint32_t DYNAMICCONFIG3;		// Selects the configuration information for
-  __IO	uint32_t DYNAMICRASCAS3;		// Selects the RAS and CAS latencies for
+  __IO	uint32_t DYNAMICCONFIG3;	// Selects the configuration information for
+  __IO	uint32_t DYNAMICRASCAS3;	// Selects the RAS and CAS latencies for
 	uint32_t RESERVED7[38];
   __IO	uint32_t STATICCONFIG0;		// Selects the memory configuration for static 0
-  __IO	uint32_t STATICWAITWEN0;		// Selects the delay from chip select 0 to
-  __IO	uint32_t STATICWAITOEN0;		// Selects the delay from chip select 0 or
+  __IO	uint32_t STATICWAITWEN0;	// Selects the delay from chip select 0 to
+  __IO	uint32_t STATICWAITOEN0;	// Selects the delay from chip select 0 or
   __IO	uint32_t STATICWAITRD0;		// Selects the delay from chip select 0 to a
-  __IO	uint32_t STATICWAITPAGE0;		// Selects the delay for asynchronous page
+  __IO	uint32_t STATICWAITPAGE0;	// Selects the delay for asynchronous page
   __IO	uint32_t STATICWAITWR0;		// Selects the delay from chip select 0 to a
-  __IO	uint32_t STATICWAITTURN0;		// Selects the number of bus turnaround
+  __IO	uint32_t STATICWAITTURN0;	// Selects the number of bus turnaround
 	uint32_t RESERVED8[1];
   __IO	uint32_t STATICCONFIG1;		// Selects the memory configuration for static 0
-  __IO	uint32_t STATICWAITWEN1;		// Selects the delay from chip select 1 to
-  __IO	uint32_t STATICWAITOEN1;		// Selects the delay from chip select 1 or
+  __IO	uint32_t STATICWAITWEN1;	// Selects the delay from chip select 1 to
+  __IO	uint32_t STATICWAITOEN1;	// Selects the delay from chip select 1 or
   __IO	uint32_t STATICWAITRD1;		// Selects the delay from chip select 1 to a
-  __IO	uint32_t STATICWAITPAGE1;		// Selects the delay for asynchronous page
+  __IO	uint32_t STATICWAITPAGE1;	// Selects the delay for asynchronous page
   __IO	uint32_t STATICWAITWR1;		// Selects the delay from chip select 1 to a
-  __IO	uint32_t STATICWAITTURN1;		// Selects the number of bus turnaround
+  __IO	uint32_t STATICWAITTURN1;	// Selects the number of bus turnaround
 	uint32_t RESERVED9[1];
   __IO	uint32_t STATICCONFIG2;		// Selects the memory configuration for static 0
-  __IO	uint32_t STATICWAITWEN2;		// Selects the delay from chip select 2 to
-  __IO	uint32_t STATICWAITOEN2;		// Selects the delay from chip select 2 or
+  __IO	uint32_t STATICWAITWEN2;	// Selects the delay from chip select 2 to
+  __IO	uint32_t STATICWAITOEN2;	// Selects the delay from chip select 2 or
   __IO	uint32_t STATICWAITRD2;		// Selects the delay from chip select 2 to a
-  __IO	uint32_t STATICWAITPAGE2;		// Selects the delay for asynchronous page
+  __IO	uint32_t STATICWAITPAGE2;	// Selects the delay for asynchronous page
   __IO	uint32_t STATICWAITWR2;		// Selects the delay from chip select 2 to a
-  __IO	uint32_t STATICWAITTURN2;		// Selects the number of bus turnaround
+  __IO	uint32_t STATICWAITTURN2;	// Selects the number of bus turnaround
 	uint32_t RESERVED10[1];
   __IO	uint32_t STATICCONFIG3;		// Selects the memory configuration for static 0
-  __IO	uint32_t STATICWAITWEN3;		// Selects the delay from chip select 3 to
-  __IO	uint32_t STATICWAITOEN3;		// Selects the delay from chip select 3 or
+  __IO	uint32_t STATICWAITWEN3;	// Selects the delay from chip select 3 to
+  __IO	uint32_t STATICWAITOEN3;	// Selects the delay from chip select 3 or
   __IO	uint32_t STATICWAITRD3;		// Selects the delay from chip select 3 to a
-  __IO	uint32_t STATICWAITPAGE3;		// Selects the delay for asynchronous page
+  __IO	uint32_t STATICWAITPAGE3;	// Selects the delay for asynchronous page
   __IO	uint32_t STATICWAITWR3;		// Selects the delay from chip select 3 to a
-  __IO	uint32_t STATICWAITTURN3;		// Selects the number of bus turnaround
+  __IO	uint32_t STATICWAITTURN3;	// Selects the number of bus turnaround
 } LPC_EMC_TypeDef;
 /*@}*/ /* end of group LPC18xx_EMC */
 
@@ -984,8 +946,8 @@ typedef struct
 {
 	uint32_t RESERVED0[64];
   __I	uint32_t CAPLENGTH;		// Capability register length
-  __I	uint32_t HCSPARAMS;		// Host controller structural parameters 0x0001
-  __I	uint32_t HCCPARAMS;		// Host controller capability parameters 0x0000
+  __I	uint32_t HCSPARAMS;		// Host controller structural parameters
+  __I	uint32_t HCCPARAMS;		// Host controller capability parameters
 	uint32_t RESERVED1[5];
   __I	uint32_t DCIVERSION;		// Device interface version number
   __I	uint32_t DCCPARAMS;		// Device controller capability
@@ -1263,14 +1225,14 @@ typedef struct
     uint32_t CTRL;			// SCT event control registers
   } EVENT[16];
 
-	uint32_t RESERVED6[96];
+	uint32_t RESERVED8[96];
 
 /* Outputs */
 
   __IO struct {
     uint32_t SET;			// SCT output state registers
     uint32_t CLEAR;			// SCT output clear registers
-  } OUTPUT[16];
+  } OUTCTRL[16];
 
 } LPC_SCT_TypeDef;
 /*@}*/ /* end of group LPC18xx_SCT */
@@ -1295,7 +1257,7 @@ typedef struct
       __IO uint32_t MR3;	// Match Register 3
     };
     __IO uint32_t MR[4];	// Match Registers
-  }
+  };
 
   __IO	uint32_t CCR;		// Capture Control Register
   union {
@@ -1321,11 +1283,11 @@ typedef struct
 typedef struct
 {
   __I	uint32_t CON;		// PWM Control read address
-  __O	uint32_t CON_SET;		// PWM Control set address
-  __O	uint32_t CON_CLR;		// PWM Control clear address
-  __I	uint32_t CAPCON;		// Capture Control read address
-  __O	uint32_t CAPCON_SET;		// Capture Control set address
-  __O	uint32_t CAPCON_CLR;		// Event Control clear address
+  __O	uint32_t CON_SET;	// PWM Control set address
+  __O	uint32_t CON_CLR;	// PWM Control clear address
+  __I	uint32_t CAPCON;	// Capture Control read address
+  __O	uint32_t CAPCON_SET;	// Capture Control set address
+  __O	uint32_t CAPCON_CLR;	// Event Control clear address
   __IO	uint32_t TC0;		// Timer Counter register
   __IO	uint32_t TC1;		// Timer Counter register
   __IO	uint32_t TC2;		// Timer Counter register
@@ -1341,15 +1303,15 @@ typedef struct
   __I	uint32_t CAP1;		// Capture register
   __I	uint32_t CAP2;		// Capture register
   __I	uint32_t INTEN;		// Interrupt Enable read address
-  __O	uint32_t INTEN_SET;		// Interrupt Enable set address
-  __O	uint32_t INTEN_CLR;		// Interrupt Enable clear address
-  __I	uint32_t CNTCON;		// Count Control read address
-  __O	uint32_t CNTCON_SET;		// Count Control set address
-  __O	uint32_t CNTCON_CLR;		// Count Control clear address
+  __O	uint32_t INTEN_SET;	// Interrupt Enable set address
+  __O	uint32_t INTEN_CLR;	// Interrupt Enable clear address
+  __I	uint32_t CNTCON;	// Count Control read address
+  __O	uint32_t CNTCON_SET;	// Count Control set address
+  __O	uint32_t CNTCON_CLR;	// Count Control clear address
   __I	uint32_t INTF;		// Interrupt flags read address
-  __O	uint32_t INTF_SET;		// Interrupt flags set address
-  __O	uint32_t INTF_CLR;		// Interrupt flags clear address
-  __O	uint32_t CAP_CLR;		// Capture clear address
+  __O	uint32_t INTF_SET;	// Interrupt flags set address
+  __O	uint32_t INTF_CLR;	// Interrupt flags clear address
+  __O	uint32_t CAP_CLR;	// Capture clear address
 } LPC_MCPWM_TypeDef;
 /*@}*/ /* end of group LPC18xx_MCPWM */
 
@@ -1363,23 +1325,23 @@ typedef struct
   __I	uint32_t STAT;		// Encoder status register
   __IO	uint32_t CONF;		// Configuration register
   __I	uint32_t POS;		// Position register
-  __IO	uint32_t MAXPOS;		// Maximum position register
-  __IO	uint32_t CMPOS0;		// position compare register 0
-  __IO	uint32_t CMPOS1;		// position compare register 1
-  __IO	uint32_t CMPOS2;		// position compare register 2
-  __I	uint32_t INXCNT;		// Index count register
-  __IO	uint32_t INXCMP0;		// Index compare register 0
+  __IO	uint32_t MAXPOS;	// Maximum position register
+  __IO	uint32_t CMPOS0;	// position compare register 0
+  __IO	uint32_t CMPOS1;	// position compare register 1
+  __IO	uint32_t CMPOS2;	// position compare register 2
+  __I	uint32_t INXCNT;	// Index count register
+  __IO	uint32_t INXCMP0;	// Index compare register 0
   __IO	uint32_t LOAD;		// Velocity timer reload register
   __I	uint32_t TIME;		// Velocity timer register
   __I	uint32_t VEL;		// Velocity counter register
   __I	uint32_t CAP;		// Velocity capture register
-  __IO	uint32_t VELCOMP;		// Velocity compare register
-  __IO	uint32_t FILTERPHA;		// Digital filter register on input
-  __IO	uint32_t FILTERPHB;		// Digital filter register on input
-  __IO	uint32_t FILTERINX;		// Digital filter register on input
-  __IO	uint32_t WINDOW;		// Index acceptance window
-  __IO	uint32_t INXCMP1;		// Index compare register 1
-  __IO	uint32_t INXCMP2;		// Index compare register 2
+  __IO	uint32_t VELCOMP;	// Velocity compare register
+  __IO	uint32_t FILTERPHA;	// Digital filter register on input
+  __IO	uint32_t FILTERPHB;	// Digital filter register on input
+  __IO	uint32_t FILTERINX;	// Digital filter register on input
+  __IO	uint32_t WINDOW;	// Index acceptance window
+  __IO	uint32_t INXCMP1;	// Index compare register 1
+  __IO	uint32_t INXCMP2;	// Index compare register 2
 	uint32_t RESERVED0[993];
   __O	uint32_t IEC;		// Interrupt enable clear register
   __O	uint32_t IES;		// Interrupt enable set register
@@ -1392,10 +1354,10 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t COMPVAL;		// Compare register
+  __IO	uint32_t COMPVAL;	// Compare register
   __IO	uint32_t MASK;		// Mask register
   __IO	uint32_t CTRL;		// Control register
-  __IO	uint32_t COUNTER;		// 32-bit counter
+  __IO	uint32_t COUNTER;	// 32-bit counter
 } LPC_RIT_TypeDef;
 /*@}*/ /* end of group LPC18xx_RIT */
 
@@ -1405,15 +1367,15 @@ typedef struct
 */
 typedef struct
 {
-  __IO	uint32_t DOWNCOUNTER;		// Downcounter register
-  __IO	uint32_t PRESET;		// Preset value register
+  __IO	uint32_t DOWNCOUNTER;	// Downcounter register
+  __IO	uint32_t PRESET;	// Preset value register
 	uint32_t RESERVED0[1012];
-  __O	uint32_t CLR_EN;		// Interrupt clear enable register
-  __O	uint32_t SET_EN;		// Interrupt set enable register
-  __I	uint32_t STATUS;		// Status register
-  __I	uint32_t ENABLE;		// Enable register
-  __O	uint32_t CLR_STAT;		// Clear register
-  __O	uint32_t SET_STAT;		// Set register
+  __O	uint32_t CLR_EN;	// Interrupt clear enable register
+  __O	uint32_t SET_EN;	// Interrupt set enable register
+  __I	uint32_t STATUS;	// Status register
+  __I	uint32_t ENABLE;	// Enable register
+  __O	uint32_t CLR_STAT;	// Clear register
+  __O	uint32_t SET_STAT;	// Set register
 } LPC_ATIMER_TypeDef;
 /*@}*/ /* end of group LPC18xx_ATIMER */
 
@@ -1519,9 +1481,6 @@ typedef struct
     __O uint32_t FCR;		// FIFO Control Register
   };
 
-  __IO	uint32_t DLL;		// Divisor Latch LSB
-  __IO	uint32_t IER;		// Interrupt Enable Register
-  __O	uint32_t FCR;		// FIFO Control Register
   __IO	uint32_t LCR;		// Line Control Register
 	uint32_t RESERVED0[1];
   __I	uint32_t LSR;		// Line Status Register
