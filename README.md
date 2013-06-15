@@ -11,9 +11,10 @@ is still required for downloading and debugging via NXP's LPC-Link.
 
 ## Prerequisites ##
 
-[GNU Make](http://www.gnu.org/software/make/) and standard linux utilities are
-required. If you're running any sensible desktop linux then these will already
-be installed.
+[GNU Make](http://www.gnu.org/software/make/) and the following standard
+utilities are required: `cat`, `echo`, `find`, `grep`, `mkdir`, `rm`, `sed` and
+`shuf`. If you're running any sensible desktop linux then these will already be
+installed.
 
 You will need to aquire
 [GNU Tools for ARM Embedded Processors](https://launchpad.net/gcc-arm-embedded/)
