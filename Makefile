@@ -56,6 +56,7 @@ GREP	:= grep
 MKDIR	:= mkdir -p
 RM	:= rm -r
 SED	:= sed
+SHUF	:= shuf
 
 # ARM GNU Toolchain
 #
@@ -200,7 +201,7 @@ gdbscript:
 #
 .PHONY: lpc-link
 lpc-link: gdbscript
-	$(eval PORT := $(shell shuf -i 2000-65000 -n 1))
+	$(eval PORT := $(shell $(SHUF) -i 2000-65000 -n 1))
 	@$(SED) -i 's/^target extended-remote.*$$/target extended-remote :$(PORT)/' gdbscript
 	$(DFUUTIL) -d 0x471:0xdf55 -c 0 -t 2048 -R -D $(DFUFIRMWARE)
 	$(LPCLINK) -wire=winusb -p$(CHIP) -vendor=NXP -server=:$(PORT)
