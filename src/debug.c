@@ -24,7 +24,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include <LPC11xx.h>
+#include <LPC11Uxx.h>
 
 /* CoreDebug registers are not accesible from processor in Cortex-M0 */
 // CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk
