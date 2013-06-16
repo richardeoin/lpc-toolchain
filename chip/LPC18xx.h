@@ -70,7 +70,7 @@
 
 typedef enum IRQn
 {
-/******  Cortex-M3 Processor Exceptions Numbers ***************************************************/
+/******  Cortex-M3 Processor Exceptions Numbers *********************************/
 
   NonMaskableInt_IRQn           = -14,      /*!<  2 Non Maskable Interrupt      */
   MemoryManagement_IRQn         = -12,      /*!<  4 Memory Management Interrupt */
@@ -81,8 +81,61 @@ typedef enum IRQn
   PendSV_IRQn                   = -2,       /*!< 14 Pend SV Interrupt           */
   SysTick_IRQn                  = -1,       /*!< 15 System Tick Interrupt       */
 
-/******  Device Specific Interrupt Numbers ********************************************************/
+/******  Device Specific Interrupt Numbers **************************************/
 
+  DAC_IRQn			= 0,
+  Reserved0_IRQn		= 1,
+  DMA_IRQn			= 2,
+  Reserved1_IRQn		= 3,
+  FLASHEEPROM_IRQn		= 4,	/* ORed flash A, flash B, EEPROM        */
+  ETHERNET_IRQn			= 5,	/* Ethernet interrupt                   */
+  SDIO_IRQn			= 6,	/* SD/MMC interrupt                     */
+  LCD_IRQn			= 7,
+  USB0_IRQn			= 8,	/* OTG interrupt                        */
+  USB1_IRQn			= 9,	/* USB1 AHB_NEED_CLK                    */
+  SCT_IRQn			= 10,	/* SCT combined interrupt               */
+  RITIMER_IRQn			= 11,
+  TIMER0_IRQn			= 12,
+  TIMER1_IRQn			= 13,
+  TIMER2_IRQn			= 14,
+  TIMER3_IRQn			= 15,
+  MCPWM_IRQn			= 16,	/* Motor control PWM                    */
+  ADC0_IRQn			= 17,
+  I2C0_IRQn			= 18,
+  I2C1_IRQn			= 19,
+  Reserved2_IRQn		= 20,
+  ADC1_IRQn			= 21,
+  SSP0_IRQn			= 22,
+  SSP1_IRQn			= 23,
+  USART0_IRQn			= 24,
+  UART1_IRQn			= 25,	/* UART and modem interrupt             */
+  USART2_IRQn			= 26,
+  USART3_IRQn			= 27,	/* USART and IrDA interrupt             */
+  I2S0_IRQn			= 28,
+  I2S1_IRQn			= 29,
+  Reserved3_IRQn		= 30,
+  Reserved4_IRQn		= 31,
+  PIN_INT0_IRQn			= 32,	/* GPIO pin interrupt 0                 */
+  PIN_INT1_IRQn			= 33,	/* GPIO pin interrupt 1                 */
+  PIN_INT2_IRQn			= 34,	/* GPIO pin interrupt 2                 */
+  PIN_INT3_IRQn			= 35,	/* GPIO pin interrupt 3                 */
+  PIN_INT4_IRQn			= 36,	/* GPIO pin interrupt 4                 */
+  PIN_INT5_IRQn			= 37,	/* GPIO pin interrupt 5                 */
+  PIN_INT6_IRQn			= 38,	/* GPIO pin interrupt 6                 */
+  PIN_INT7_IRQn			= 39,	/* GPIO pin interrupt 7                 */
+  GINT0_IRQn			= 40,	/* GPIO global interrupt 0              */
+  GINT1_IRQn			= 41,	/* GPIO global interrupt 1              */
+  EVENTROUTER_IRQn		= 42,	/* Interrupt from the event router      */
+  C_CAN1_IRQn			= 43,
+  Reserved5_IRQn		= 44,
+  Reserved6_IRQn		= 45,
+  ATIMER_IRQn			= 46,	/* Alarm timer interrupt                */
+  RTC_IRQn			= 47,	/* Combined RTC and event router/monitor*/
+  Reserved7_IRQn		= 48,
+  WWDT_IRQn			= 49,
+  Reserved8_IRQn		= 50,
+  C_CAN0_IRQn			= 51,
+  QEI_IRQn			= 52,
 } IRQn_Type;
 
 
