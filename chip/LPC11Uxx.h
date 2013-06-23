@@ -339,11 +339,11 @@ typedef struct
 {
   __IO	uint32_t CTRL;		// GPIO grouped interrupt control
 	uint32_t RESERVED0[7];
-  __IO	uint32_t PORT_POL0;		// GPIO grouped interrupt port 0 polarity 0xFFFF
-  __IO	uint32_t PORT_POL1;		// GPIO grouped interrupt port 1 polarity 0xFFFF
+  __IO	uint32_t POL0;		// GPIO grouped interrupt port 0 polarity 0xFFFF
+  __IO	uint32_t POL1;		// GPIO grouped interrupt port 1 polarity 0xFFFF
 	uint32_t RESERVED1[6];
-  __IO	uint32_t PORT_ENA0;		// GPIO grouped interrupt port 0 enable 0
-  __IO	uint32_t PORT_ENA1;		// GPIO grouped interrupt port 1 enable 0
+  __IO	uint32_t ENA0;		// GPIO grouped interrupt port 0 enable 0
+  __IO	uint32_t ENA1;		// GPIO grouped interrupt port 1 enable 0
 } LPC_GPIO_GROUP_INT_TypeDef;
 /*@}*/ /* end of group LPC11Uxx_GPIO_GROUP_INT */
 
