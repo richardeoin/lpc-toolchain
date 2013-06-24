@@ -22,7 +22,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <LPC11Uxx.h>
+#include "LPC11Uxx.h"
 
 int main (void) {
   SystemInit();
