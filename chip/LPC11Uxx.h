@@ -505,15 +505,22 @@ typedef struct
   __IO	uint32_t PR;		// Prescale Register
   __IO	uint32_t PC;		// Prescale Counter
   __IO	uint32_t MCR;		// Match Control Register
-  __IO	uint32_t MR0;		// Match Register 0
-  __IO	uint32_t MR1;		// Match Register 1
-  __IO	uint32_t MR2;		// Match Register 2
-  __IO	uint32_t MR3;		// Match Register 3
+  union {
+    struct {
+      __IO uint32_t MR0;	// Match Register 0
+      __IO uint32_t MR1;	// Match Register 1
+      __IO uint32_t MR2;	// Match Register 2
+      __IO uint32_t MR3;	// Match Register 3
+    };
+    __IO uint32_t MR[4];
+  };
   __IO	uint32_t CCR;		// Capture Control Register
   __I	uint32_t CR0;		// Capture Register 0
-	uint32_t RESERVED0[3];
+        uint32_t RESERVED0[1];
+  __I	uint32_t CR1;		// Capture Register 1
+	uint32_t RESERVED1[1];
   __IO	uint32_t EMR;		// External Match Register
-	uint32_t RESERVED1[12];
+	uint32_t RESERVED2[12];
   __IO	uint32_t CTCR;		// Count Control Register
   __IO	uint32_t PWMC;		// PWM Control Register
 } LPC_CT16B0_TypeDef;
@@ -531,13 +538,19 @@ typedef struct
   __IO	uint32_t PR;		// Prescale Register
   __IO	uint32_t PC;		// Prescale Counter
   __IO	uint32_t MCR;		// Match Control Register
-  __IO	uint32_t MR0;		// Match Register 0
-  __IO	uint32_t MR1;		// Match Register 1
-  __IO	uint32_t MR2;		// Match Register 2
-  __IO	uint32_t MR3;		// Match Register 3
+  union {
+    struct {
+      __IO uint32_t MR0;	// Match Register 0
+      __IO uint32_t MR1;	// Match Register 1
+      __IO uint32_t MR2;	// Match Register 2
+      __IO uint32_t MR3;	// Match Register 3
+    };
+    __IO uint32_t MR[4];
+  };
   __IO	uint32_t CCR;		// Capture Control Register
   __I	uint32_t CR0;		// Capture Register 0
-	uint32_t RESERVED0[3];
+  __I	uint32_t CR1;		// Capture Register 1
+	uint32_t RESERVED0[2];
   __IO	uint32_t EMR;		// External Match Register
 	uint32_t RESERVED1[12];
   __IO	uint32_t CTCR;		// Count Control Register
@@ -557,15 +570,22 @@ typedef struct
   __IO	uint32_t PR;		// Prescale Register
   __IO	uint32_t PC;		// Prescale Counter
   __IO	uint32_t MCR;		// Match Control Register
-  __IO	uint32_t MR0;		// Match Register 0
-  __IO	uint32_t MR1;		// Match Register 1
-  __IO	uint32_t MR2;		// Match Register 2
-  __IO	uint32_t MR3;		// Match Register 3
+  union {
+    struct {
+      __IO uint32_t MR0;	// Match Register 0
+      __IO uint32_t MR1;	// Match Register 1
+      __IO uint32_t MR2;	// Match Register 2
+      __IO uint32_t MR3;	// Match Register 3
+    };
+    __IO uint32_t MR[4];
+  };
   __IO	uint32_t CCR;		// Capture Control Register
   __I	uint32_t CR0;		// Capture Register 0
-	uint32_t RESERVED0[3];
+        uint32_t RESERVED0[1];
+  __I	uint32_t CR1;		// Capture Register 1
+	uint32_t RESERVED1[1];
   __IO	uint32_t EMR;		// External Match Register
-	uint32_t RESERVED1[12];
+	uint32_t RESERVED2[12];
   __IO	uint32_t CTCR;		// Count Control Register
   __IO	uint32_t PWMC;		// PWM Control Register
 } LPC_CT32B0_TypeDef;
@@ -583,13 +603,19 @@ typedef struct
   __IO	uint32_t PR;		// Prescale Register
   __IO	uint32_t PC;		// Prescale Counter
   __IO	uint32_t MCR;		// Match Control Register
-  __IO	uint32_t MR0;		// Match Register 0
-  __IO	uint32_t MR1;		// Match Register 1
-  __IO	uint32_t MR2;		// Match Register 2
-  __IO	uint32_t MR3;		// Match Register 3
+  union {
+    struct {
+      __IO uint32_t MR0;	// Match Register 0
+      __IO uint32_t MR1;	// Match Register 1
+      __IO uint32_t MR2;	// Match Register 2
+      __IO uint32_t MR3;	// Match Register 3
+    };
+    __IO uint32_t MR[4];
+  };
   __IO	uint32_t CCR;		// Capture Control Register
   __I	uint32_t CR0;		// Capture Register 0
-	uint32_t RESERVED0[3];
+  __I	uint32_t CR1;		// Capture Register 1
+	uint32_t RESERVED0[2];
   __IO	uint32_t EMR;		// External Match Register
 	uint32_t RESERVED1[12];
   __IO	uint32_t CTCR;		// Count Control Register
