@@ -22,21 +22,22 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <LPCxxxx.h>
+// Default chip header files automatically included
 
 int main (void) {
-  SystemInit();
+	SystemInit();
+	SystemCoreClockUpdate();
 
-  /* Update the value of SystemCoreClock */
-  SystemCoreClockUpdate();
+	/* Set an LED output */
+        LPC_GPIO0->FIODIR |= 1 << 22;
+        LPC_GPIO2->FIODIR |= 1 << 0;
 
-  /* Set an LED output */
-  /* TODO: */
-
-  /* Configure the SysTick for 50ms interrupts */
-  SysTick_Config(SystemCoreClock / 20);
+	/* Configure the SysTick for 50ms interrupts */
+	SysTick_Config(SystemCoreClock);
 }
+
 extern void SysTick_Handler(void) {
-  /* Toggle an LED */
-  /* TODO: */
+	/* Toggle an LED */
+	LPC_GPIO0->FIOPIN ^= 1 << 22;
+        LPC_GPIO2->FIOPIN ^= 1 << 0;
 }

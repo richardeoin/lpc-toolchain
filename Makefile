@@ -34,9 +34,8 @@
 
 # External makefile.conf
 #
-# Edit the project name, chip, includes directories and so on in this file.
-#
--include makefile.conf
+include makefile.conf
+include config/makefile_$(CHIP).conf
 
 # Directories
 #
@@ -53,17 +52,19 @@ CAT	:= cat
 ECHO	:= echo
 FIND	:= find
 GREP	:= grep
+LS	:= ls
 MKDIR	:= mkdir -p
 RM	:= rm -r
 SED	:= sed
 SHUF	:= shuf
+TAIL	:= tail
 
 # ARM GNU Toolchain
 #
 # These tools are available from https://launchpad.net/gcc-arm-embedded/ and
 # should be placed on your path. ALternatively you could compile your own.
 #
-TARGET  := arm-none-eabi
+TARGET  ?= arm-none-eabi
 AS	:= $(TARGET)-as
 CC	:= $(TARGET)-gcc
 CXX	:= $(TARGET)-g++
@@ -74,7 +75,7 @@ SIZE	:= $(TARGET)-size
 #
 # Binaries supplied with LPCXpresso used for downloading.
 #
-LPCINSTALL	:= /usr/local/lpcxpresso_4.2.3_255/lpcxpresso/bin/
+LPCINSTALL	:= /usr/local/$(shell $(LS) /usr/local/ | $(GREP) lpcxpresso | $(TAIL) -n 1)/lpcxpresso/bin/
 CHECKSUM	:= $(LPCINSTALL)checksum
 LPCLINK		:= $(LPCINSTALL)$(DEBUG)
 DFUUTIL		:= $(LPCINSTALL)dfu-util
@@ -86,10 +87,16 @@ DFUFIRMWARE	:= $(LPCINSTALL)LPCXpressoWIN.enc
 # they can be discarded if unused.  The linker performs garbage collection of
 # unused input sections.
 #
-CFLAGS	= $(FLAGS) -Wall -Wextra -std=gnu99 -ffunction-sections -fdata-sections $(ARCH_FLAGS)
-ASFLAGS	= $(FLAGS) -Wall $(ARCH_FLAGS)
-LDFLAGS = $(FLAGS) $(LINKER_FLAGS) -Wextra $(ARCH_FLAGS)
+FLAGS	+= -g3 -ggdb
 
+CFLAGS	 = $(FLAGS) -Wall -Wextra -std=gnu99 -ffunction-sections -fdata-sections $(ARCH_FLAGS)
+ASFLAGS	 = $(FLAGS) -Wall $(ARCH_FLAGS)
+
+ifeq ($(TARGET), arm-linux-gnueabi)
+	LDFLAGS = $(FLAGS) $(LINKER_FLAGS) -Wextra $(ARCH_FLAGS) -nostdlib
+else
+	LDFLAGS = $(FLAGS) $(LINKER_FLAGS) -Wextra $(ARCH_FLAGS)
+endif
 # Default target
 all: $(OUTPUT_DIR)/$(PROJECT_NAME).elf
 
@@ -116,7 +123,7 @@ $(OUTPUT_DIR)/%.o: %.c
 	$(CC) -c -MMD $(CPPFLAGS) $(CFLAGS) $(addprefix -I,$(INCLUDES)) -o $@ $<
 	@$(SED) -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' -e '/^$$/ d' -e 's/$$/ :/' < $(OUTPUT_DIR)/$*.d >> $(OUTPUT_DIR)/$*.d;
 
-# Attempt to include the dependany makefiles for every object in this makefile.
+# Attempt to include the dependeny makefiles for every object in this makefile.
 #
 # This means that object files depend on the header files they include.
 #
@@ -132,6 +139,15 @@ $(OUTPUT_DIR)/%.o: %.s
 	@$(ECHO) 'Assembling $<...'
 	@$(MKDIR) $(OUTPUT_DIR)/$(dir $<)
 	$(AS) $(ASFLAGS) -o $@ $<
+
+#
+# Generate the memory map for a processor
+#
+$(OUTPUT_DIR)/mem.ld:
+	@$(ECHO)
+	@$(ECHO) 'Making linker memory script'
+	$(CAT) chip/mem_template.ld | $(SED) "s/\$$ROM_SIZE/$(ROM_SIZE)/" | $(SED) "s/\$$RAM_SIZE/$(RAM_SIZE)/" | $(SED) "s/\$$ROM_ORIGIN/$(ROM_ORIGIN)/" | $(SED) "s/\$$RAM_ORIGIN/$(RAM_ORIGIN)/" > out/mem.ld 
+
 
 # Generate the main build artifact.
 #
@@ -212,5 +228,5 @@ lpc-link: gdbscript
 #
 .PHONY: clean
 clean:
-	$(RM) $(OUTPUT_DIR)/*
-	$(RM) gdbscript
+	$(RM) -f $(OUTPUT_DIR)/*
+	$(RM) -f gdbscript

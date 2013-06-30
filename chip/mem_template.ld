@@ -1,6 +1,7 @@
 /* 
  * Linker script for specifing the memory layout of a target.
  * Copyright (C) 2013  Richard Meadows
+ * Copyright (C) 2013  David Wood
  * 
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -24,6 +25,6 @@
 
 
 MEMORY {
-       FLASH  (rx)  : ORIGIN = 0x00000000, LENGTH = 8K
-       RAM    (xrw) : ORIGIN = 0x10000000, LENGTH = 8K
+       FLASH  (rx)  : ORIGIN = $ROM_ORIGIN, LENGTH = $ROM_SIZE
+       RAM    (xrw) : ORIGIN = $RAM_ORIGIN, LENGTH = $RAM_SIZE
 }
