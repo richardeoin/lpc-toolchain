@@ -32,8 +32,11 @@ int main (void) {
         LPC_GPIO0->FIODIR |= 1 << 22;
         LPC_GPIO2->FIODIR |= 1 << 0;
 
-	/* Configure the SysTick for 50ms interrupts */
-	SysTick_Config(SystemCoreClock);
+	/* Configure the SysTick */
+	/* Works */
+	SysTick_Config(2<<24);
+	/* Doesn't work */
+//	SysTick_Config((2<<24) + 1);
 }
 
 extern void SysTick_Handler(void) {
