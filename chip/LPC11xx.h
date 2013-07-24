@@ -105,10 +105,10 @@ typedef enum IRQn
   ADC_IRQn                      = 24,       /*!< A/D Converter                        */
   WDT_IRQn                      = 25,       /*!< Watchdog                             */
   BOD_IRQn                      = 26,       /*!< Brown Out                            */
-  EINT3_IRQn                    = 28,       /*!< External                             */
-  EINT2_IRQn                    = 29,       /*!< External                             */
-  EINT1_IRQn                    = 30,       /*!< External                             */
-  EINT0_IRQn                    = 31,       /*!< External                             */
+  PIOINT3_IRQn                  = 28,       /*!< External                             */
+  PIOINT2_IRQn                  = 29,       /*!< External                             */
+  PIOINT1_IRQn                  = 30,       /*!< External                             */
+  PIOINT0_IRQn                  = 31,       /*!< External                             */
 } IRQn_Type;
 
 
