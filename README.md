@@ -8,9 +8,10 @@ is still required for downloading and debugging via NXP's LPC-Link.
 **The master branch is not intended to be built - Rather it is just a
   base that implementations for particular chips can be built upon.**
 
-* **On GitHub: See the branches in the drop-down menu above.**
-* **On the command line: `git branch` to see a list of branches and
-  switch to one with `git checkout <branch>`.**
+To switch to a branch that will do something useful:
+* On GitHub: Select a branch from the drop-down menu above.
+* On the command line: `git branch` to see a list of branches and
+  switch to one with `git checkout <branch>`.
 
 ## Prerequisites ##
 
@@ -22,14 +23,14 @@ installed.
 You will need to aquire
 [GNU Tools for ARM Embedded Processors](https://launchpad.net/gcc-arm-embedded/).
 
-###### On Ubuntu
+##### On Ubuntu
 
 ```
 sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded
 sudo apt-get update && sudo apt-get install gcc-arm-none-eabi
 ```
 
-###### Otherwise
+##### Otherwise
 
 [Download](https://launchpad.net/gcc-arm-embedded/+download) and add
 the `bin/` directory to your path. If you use
@@ -38,7 +39,7 @@ able to do this by adding `export
 PATH=$PATH:/path/to/gnu/tools/for/arm/bin/` to your
 `~/.bashrc`.
 
-####### Not Recommended
+##### Not Recommended
 
 You could build your own tools from source. Have a look at
 [summon-arm-toolchain](http://summon-arm-toolchain.org/).
