@@ -5,17 +5,7 @@ compilation, but the
 [LPCXpresso IDE](http://www.nxp.com/techzones/microcontrollers-techzone/tools-ecosystem/lpcxpresso.html)
 is still required for downloading and debugging via NXP's LPC-Link.
 
-<<<<<<< HEAD
 **This branch is intended for the LPC111x series of devices, and the LPC1114 in particular.**
-=======
-**The master branch is not intended to be built - Rather it is just a
-  base that implementations for particular chips can be built upon.**
-
-To switch to a branch that will do something useful:
-* On GitHub: Select a branch from the drop-down menu above.
-* On the command line: `git branch` to see a list of branches and
-  switch to one with `git checkout <branch>`.
->>>>>>> master
 
 ## Prerequisites ##
 
