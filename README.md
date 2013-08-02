@@ -5,23 +5,48 @@ compilation, but the
 [LPCXpresso IDE](http://www.nxp.com/techzones/microcontrollers-techzone/tools-ecosystem/lpcxpresso.html)
 is still required for downloading and debugging via NXP's LPC-Link.
 
+<<<<<<< HEAD
 **This branch is intended for the LPC111x series of devices, and the LPC1114 in particular.**
+=======
+**The master branch is not intended to be built - Rather it is just a
+  base that implementations for particular chips can be built upon.**
+
+To switch to a branch that will do something useful:
+* On GitHub: Select a branch from the drop-down menu above.
+* On the command line: `git branch` to see a list of branches and
+  switch to one with `git checkout <branch>`.
+>>>>>>> master
 
 ## Prerequisites ##
 
-[GNU Make](http://www.gnu.org/software/make/) and standard linux utilities are
-required. If you're running any sensible desktop linux then these will already
-be installed.
+[GNU Make](http://www.gnu.org/software/make/) and the following standard
+utilities are required: `cat`, `echo`, `find`, `grep`, `mkdir`, `rm`, `sed` and
+`shuf`. If you're running any sensible desktop linux then these will already be
+installed.
 
 You will need to aquire
-[GNU Tools for ARM Embedded Processors](https://launchpad.net/gcc-arm-embedded/)
-and add the `bin/` directory to your path.  If you use
-[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell\)), you might be able to
-do this by adding `export PATH=$PATH:/path/to/gnu/tools/for/arm/bin/` to your
-`~/.bashrc`. Alternatively you could build you own
-[ARM GCC Toolchain from source](http://www.microbuilder.eu/Tutorials/SoftwareDevelopment/BuildingGCCToolchain.aspx). Just
-remember that you'll need to specify the target as `arm-none-eabi` for
-compatability with this project.
+[GNU Tools for ARM Embedded Processors](https://launchpad.net/gcc-arm-embedded/).
+
+##### On Ubuntu
+
+```
+sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded
+sudo apt-get update && sudo apt-get install gcc-arm-none-eabi
+```
+
+##### Otherwise
+
+[Download](https://launchpad.net/gcc-arm-embedded/+download) and add
+the `bin/` directory to your path. If you use
+[Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell\)), you might be
+able to do this by adding `export
+PATH=$PATH:/path/to/gnu/tools/for/arm/bin/` to your
+`~/.bashrc`.
+
+##### Not Recommended
+
+You could build your own tools from source. Have a look at
+[summon-arm-toolchain](http://summon-arm-toolchain.org/).
 
 ## Configuration ##
 
