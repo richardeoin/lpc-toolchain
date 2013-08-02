@@ -5,7 +5,7 @@ compilation, but the
 [LPCXpresso IDE](http://www.nxp.com/techzones/microcontrollers-techzone/tools-ecosystem/lpcxpresso.html)
 is still required for downloading and debugging via NXP's LPC-Link.
 
-** This branch is intended for the LPC111x series of devices, and the LPC1114 in particular. **
+**This branch is intended for the LPC111x series of devices, and the LPC1114 in particular.**
 
 ## Prerequisites ##
 
