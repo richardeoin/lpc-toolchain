@@ -110,4 +110,4 @@ rather than editing [`sections.ld`](sections.ld).
 
 ## Sources & Licensing ##
 
-See [LICENSE.md](LICENSE.md)
+See [LICENSE.md](LICENSE-lpc-toolchain.md)
