@@ -22,8 +22,8 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <LPC11Uxx.h>
-#include <debug.h>
+#include "LPC11Uxx.h"
+#include "debug.h"
 
 int main (void) {
   SystemInit();
