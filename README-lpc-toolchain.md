@@ -6,7 +6,7 @@ compilation, but the
 is still required for downloading and debugging via NXP's LPC-Link.
 
 **The master branch is not intended to be built - Rather it is just a
-  base that implementations for particular chips can be built upon.**
+  base that implementations for particular chips can be derived from.**
 
 To switch to a branch that will do something useful:
 * On GitHub: Select a branch from the drop-down menu above.
