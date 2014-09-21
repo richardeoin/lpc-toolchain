@@ -30,6 +30,22 @@ sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded
 sudo apt-get update && sudo apt-get install gcc-arm-none-eabi
 ```
 
+###### Note about gcc-arm-embedded on Ubuntu 14.04 and later
+
+If you are using Ubuntu 14.04 and later, please be careful because
+there are packages with same name but produced by Debian and inherited
+by Ubuntu. Simply follow the above 3 steps, you may end up with
+gcc-arm-none-eabi from Ubuntu. So to install gcc-arm-none-eabi from
+ARM, steps are:
+
+```
+1). sudo apt-get remove binutils-arm-none-eabi gcc-arm-none-eabi
+2). sudo add-apt-repository ppa:terry.guo/gcc-arm-embedded
+3). sudo apt-get update
+4). sudo apt-get install gcc-arm-none-eabi=4-8-2014q2-0trusty10
+```
+Meanwhile we are working with Debian to consolidate and unify this toolchain.
+
 ##### Otherwise
 
 [Download](https://launchpad.net/gcc-arm-embedded/+download) and add
@@ -62,7 +78,7 @@ install.
 
 ## Usage ##
 
-After making sure [sources.mk](#sources) is up-to-date, simply run `make` to compile. 
+After making sure [sources.mk](#sources) is up-to-date, simply run `make` to compile.
 
 If you wish to download / debug using NXP's LPC-Link, run `make lpc-link` to
 flash the LPC-Link's own firmware and start a server which can be connected to
