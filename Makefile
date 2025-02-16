@@ -57,6 +57,14 @@ MKDIR	:= mkdir -p
 RM	:= rm -r
 SED	:= sed
 SHUF	:= shuf
+HOST_OS := $(shell uname)
+ifeq ($(HOST_OS), Linux)
+	SED_I := $(SED) -i
+	TAIL1 := tail -1 -
+else ifeq ($(HOST_OS), Darwin)
+	SED_I := $(SED) -i ''
+	TAIL1 := tail -1
+endif
 
 # ARM GNU Toolchain
 #
@@ -140,7 +148,7 @@ $(OUTPUT_DIR)/%.o: %.s
 # about human-readable .map is also created.
 #
 $(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
-	@$(SED) -i 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
+	@$(SED_I) 's/^file.*$$/file $(OUTPUT_DIR)\/$(PROJECT_NAME)\.elf/' gdbscript
 	@$(ECHO)
 	@$(ECHO) 'Linking $@...'
 	$(CC) $(LDFLAGS) $(addprefix -T,$(LINKERS)) -Wl,-Map,$(@:.elf=.map) -o $@ $(OBJECTS)
@@ -149,8 +157,8 @@ $(OUTPUT_DIR)/$(PROJECT_NAME).elf: $(OBJECTS) $(LINKERS) gdbscript
 	@$(ECHO)
 	$(SIZE) $@
 	@$(ECHO)
-	@$(SIZE) $@|tail -1 -|awk '{print "ROM Usage: "int(($$1+$$2)/10.24)/100"K / $(ROM_SIZE)"}'
-	@$(SIZE) $@|tail -1 -|awk '{print "RAM Usage: "int(($$2+$$3)/10.24)/100"K / $(RAM_SIZE)"}'
+	@$(SIZE) $@ | $(TAIL1) | awk '{print "ROM Usage: "int(($$1+$$2)/10.24)/100"K / $(ROM_SIZE)"}'
+	@$(SIZE) $@ | $(TAIL1) | awk '{print "RAM Usage: "int(($$2+$$3)/10.24)/100"K / $(RAM_SIZE)"}'
 
 # Creates sources.mk
 #
